@@ -4,374 +4,1352 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FCS Consultancy Management System | Project Proposal</title>
-  <meta name="description" content="Professional consulting proposal for FCS Consultancy Management System: Project Planning & Guided Implementation Support by Praveenkumar.">
-
+  <meta name="description" content="Professional Project Planning & Guided Implementation Support proposal for FCS Consultancy Management System. Clear scope, architecture, workflows, and transparent investment schedule.">
+  
   <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Bootstrap 5 CSS via CDN -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons via CDN -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     /* ==========================================================================
-       CSS Variables & Base Styling
+       1. CSS RESET & VARIABLES
        ========================================================================== */
     :root {
-      --primary-navy: #0f172a;       /* Deep slate/navy */
-      --secondary-navy: #1e293b;     /* Card headers & dark elements */
-      --accent-blue: #2563eb;        /* Professional blue accent */
-      --accent-blue-hover: #1d4ed8;
-      --accent-light: #eff6ff;       /* Soft blue tint */
-      --bg-light: #f8fafc;          /* Subtle light-gray background */
+      --primary-navy: #0f172a;
+      --primary-dark: #090d16;
+      --accent-blue: #2563eb;
+      --accent-hover: #1d4ed8;
+      --accent-light: #eff6ff;
+      --text-main: #334155;
       --text-dark: #0f172a;
       --text-muted: #64748b;
       --border-color: #e2e8f0;
-      --card-radius: 14px;
-      --transition-smooth: all 0.25s ease-in-out;
+      --bg-light: #f8fafc;
+      --bg-white: #ffffff;
+      
+      /* Vibrant ROI / Profit-Loss Palette */
+      --profit-green: #059669;
+      --profit-green-bg: #ecfdf5;
+      --profit-green-border: #a7f3d0;
+      --savings-emerald: #10b981;
+      --loss-amber: #d97706;
+      --loss-amber-bg: #fffbeb;
+      --stat-blue: #3b82f6;
+      --stat-blue-bg: #eff6ff;
+
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    * {
+    *, *::before, *::after {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     html {
       scroll-behavior: smooth;
+      font-size: 16px;
     }
 
     body {
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      color: var(--text-dark);
-      background-color: #ffffff;
-      line-height: 1.65;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg-white);
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    /* ==========================================================================
-       Section Styling & Helpers
-       ========================================================================== */
-    .section-alt {
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .section-padding {
+      padding: 5rem 0;
+    }
+
+    .bg-light-alt {
       background-color: var(--bg-light);
       border-top: 1px solid var(--border-color);
       border-bottom: 1px solid var(--border-color);
     }
 
-    .badge-pill-custom {
+    /* Headings */
+    h1, h2, h3, h4, h5 {
+      color: var(--text-dark);
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 3.5rem auto;
+    }
+
+    .section-pill {
+      display: inline-block;
       font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+      font-weight: 700;
       text-transform: uppercase;
-      padding: 6px 14px;
+      letter-spacing: 0.08em;
+      padding: 0.35rem 0.85rem;
       border-radius: 9999px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .badge-navy {
-      background-color: #f1f5f9;
-      color: var(--primary-navy);
-      border: 1px solid #cbd5e1;
-    }
-
-    .badge-blue {
-      background-color: var(--accent-light);
+      background: var(--accent-light);
       color: var(--accent-blue);
-      border: 1px solid #bfdbfe;
+      margin-bottom: 0.85rem;
+      border: 1px solid rgba(37, 99, 235, 0.15);
     }
 
     .section-title {
-      font-weight: 700;
-      font-size: 2.1rem;
-      letter-spacing: -0.02em;
-      color: var(--primary-navy);
-    }
-
-    @media (max-width: 768px) {
-      .section-title {
-        font-size: 1.75rem;
-      }
+      font-size: 2.15rem;
+      margin-bottom: 1rem;
     }
 
     .section-desc {
-      color: var(--text-muted);
       font-size: 1.05rem;
-      max-width: 720px;
-      margin-left: auto;
-      margin-right: auto;
+      color: var(--text-muted);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.75rem 1.4rem;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background-color: var(--accent-blue);
+      color: #fff;
+      box-shadow: 0 2px 4px rgba(37, 99, 235, 0.25);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background-color: #fff;
+      color: var(--primary-navy);
+      border-color: var(--border-color);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--bg-light);
+      border-color: #cbd5e1;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--accent-blue);
+      border-color: rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-outline:hover {
+      background: var(--accent-light);
+      border-color: var(--accent-blue);
     }
 
     /* ==========================================================================
-       Navigation Bar
+       2. NAVIGATION & HAMBURGER (DESKTOP & MOBILE)
        ========================================================================== */
-    .navbar-custom {
-      background-color: rgba(255, 255, 255, 0.94);
+    .site-nav {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border-color);
-      transition: var(--transition-smooth);
+      z-index: 1000;
+      padding: 0.85rem 0;
     }
 
-    .navbar-brand-title {
-      font-weight: 700;
-      font-size: 1.15rem;
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 1.25rem;
+      font-weight: 800;
       color: var(--primary-navy);
-      letter-spacing: -0.01em;
+      letter-spacing: -0.02em;
     }
 
-    .nav-link {
+    .brand-subtitle {
+      font-size: 0.72rem;
       font-weight: 500;
-      font-size: 0.925rem;
-      color: var(--text-muted) !important;
-      padding: 0.5rem 0.85rem !important;
-      transition: var(--transition-smooth);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
 
-    .nav-link:hover, .nav-link:focus {
-      color: var(--accent-blue) !important;
+    .nav-right-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
     }
 
-    .btn-corporate-primary {
-      background-color: var(--accent-blue);
-      color: #ffffff;
-      font-weight: 600;
-      font-size: 0.9rem;
-      border-radius: 8px;
-      padding: 8px 18px;
-      border: 1px solid var(--accent-blue);
-      transition: var(--transition-smooth);
+    /* Universal Hamburger Toggle */
+    .nav-hamburger-btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-    }
-
-    .btn-corporate-primary:hover {
-      background-color: var(--accent-blue-hover);
-      border-color: var(--accent-blue-hover);
-      color: #ffffff;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
-    }
-
-    .btn-corporate-outline {
-      background-color: #ffffff;
+      gap: 0.5rem;
+      padding: 0.55rem 0.9rem;
+      background: var(--bg-light);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
       color: var(--primary-navy);
       font-weight: 600;
-      font-size: 0.9rem;
-      border-radius: 8px;
-      padding: 8px 18px;
-      border: 1px solid var(--border-color);
-      transition: var(--transition-smooth);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: var(--transition);
     }
 
-    .btn-corporate-outline:hover {
-      background-color: #f8fafc;
+    .nav-hamburger-btn:hover {
+      background: #e2e8f0;
       border-color: #cbd5e1;
+    }
+
+    .nav-hamburger-btn i {
+      font-size: 1.05rem;
+    }
+
+    /* Offcanvas Navigation Overlay & Drawer */
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 1100;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .menu-overlay.is-active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .offcanvas-menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      max-width: 360px;
+      background: var(--bg-white);
+      z-index: 1200;
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: -10px 0 25px rgba(0, 0, 0, 0.15);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .offcanvas-menu.is-active {
+      transform: translateX(0);
+    }
+
+    .offcanvas-header {
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-color);
+      background: var(--bg-light);
+    }
+
+    .close-menu-btn {
+      background: transparent;
+      border: none;
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 0.4rem;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+
+    .close-menu-btn:hover {
+      color: var(--text-dark);
+      background: var(--border-color);
+    }
+
+    .offcanvas-body {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .nav-links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .nav-link-item {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.75rem 1rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      border-radius: var(--radius-md);
+      transition: var(--transition);
+    }
+
+    .nav-link-item i {
+      width: 20px;
       color: var(--accent-blue);
+      text-align: center;
+    }
+
+    .nav-link-item:hover {
+      background: var(--accent-light);
+      color: var(--accent-blue);
+      transform: translateX(4px);
+    }
+
+    .offcanvas-footer {
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
     }
 
     /* ==========================================================================
-       Cards & Elevation
+       3. HERO SECTION & COMPARATIVE PRICING
        ========================================================================== */
-    .card-proposal {
-      background-color: #ffffff;
-      border: 1px solid var(--border-color);
-      border-radius: var(--card-radius);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-      transition: var(--transition-smooth);
+    .hero-section {
+      padding: 4.5rem 0 3.5rem;
+      background: radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.04) 0%, transparent 60%);
     }
 
-    .card-proposal:hover {
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
+    .hero-content {
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto 3rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 4vw, 3.25rem);
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--accent-blue);
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .hero-price-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.75rem;
+      max-width: 920px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .price-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: 2.25rem 2rem;
+      text-align: left;
+      position: relative;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .price-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .price-card.featured {
+      border: 2px solid var(--accent-blue);
+      box-shadow: var(--shadow-xl);
+      background: linear-gradient(180deg, #ffffff 0%, var(--accent-light) 100%);
+    }
+
+    .price-card-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      background: var(--bg-light);
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .price-card.featured .price-card-tag {
+      background: var(--accent-blue);
+      color: #fff;
+    }
+
+    .price-card-title {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .price-card-amount {
+      font-size: 2.35rem;
+      font-weight: 800;
+      color: var(--primary-navy);
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .price-card.featured .price-card-amount {
+      color: var(--accent-blue);
+    }
+
+    .price-card-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .hero-disclaimer-box {
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+      background: #f1f5f9;
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1.25rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      border: 1px dashed var(--border-color);
+    }
+
+    .hero-cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    /* ==========================================================================
+       4. CLIENT ADVANTAGE / VALUE PROPOSITION (BENEFITS)
+       ========================================================================== */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .benefit-item-card {
+      background: #fff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      position: relative;
+    }
+
+    .benefit-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--savings-emerald);
+      background: var(--profit-green-bg);
+      border: 1px solid var(--profit-green-border);
+      padding: 0.2rem 0.5rem;
+      border-radius: var(--radius-sm);
+      margin-bottom: 1rem;
+    }
+
+    .benefit-title {
+      font-size: 1.15rem;
+      margin-bottom: 0.65rem;
+      color: var(--primary-navy);
+    }
+
+    .benefit-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* ==========================================================================
+       5. CRUD OPERATIONS & WORKFLOWS
+       ========================================================================== */
+    .crud-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .crud-card {
+      background: #fff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      transition: var(--transition);
+    }
+
+    .crud-card:hover {
+      border-color: var(--accent-blue);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .crud-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+      background: var(--accent-light);
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+
+    .crud-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      color: var(--primary-navy);
+    }
+
+    .crud-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .notice-box {
+      background: var(--bg-light);
+      border-left: 4px solid var(--accent-blue);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 1.25rem 1.5rem;
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    /* Workflows Grid */
+    .workflows-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .workflow-card {
+      background: #fff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .workflow-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .workflow-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--accent-light);
+      color: var(--accent-blue);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .workflow-steps-box {
+      background: var(--bg-light);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--primary-navy);
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       6. ROLES & DASHBOARDS
+       ========================================================================== */
+    .roles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .role-card {
+      background: #fff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .role-card:hover {
+      box-shadow: var(--shadow-md);
       border-color: #cbd5e1;
     }
 
-    /* Hero Pricing Cards */
-    .pricing-card-comparison {
+    .role-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .role-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      background: #f1f5f9;
+      color: var(--text-dark);
+    }
+
+    .role-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      font-size: 0.88rem;
+      color: var(--text-main);
+    }
+
+    .role-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .role-list li i {
+      color: var(--accent-blue);
+      font-size: 0.75rem;
+      margin-top: 0.3rem;
+    }
+
+    /* ==========================================================================
+       7. RESPONSIBILITIES (10 CARDS)
+       ========================================================================== */
+    .resp-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .resp-card {
+      background: #fff;
       border: 1px solid var(--border-color);
-      border-radius: var(--card-radius);
-      padding: 2rem;
-      height: 100%;
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      display: flex;
+      gap: 1.25rem;
+      transition: var(--transition);
+    }
+
+    .resp-card:hover {
+      border-color: var(--accent-blue);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .resp-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--accent-blue);
+      line-height: 1;
+      opacity: 0.75;
+    }
+
+    .resp-title {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary-navy);
+    }
+
+    .resp-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* ==========================================================================
+       8. VIBRANT INTERACTIVE CALCULATOR (FINANCIAL & ROI DASHBOARD)
+       ========================================================================== */
+    .calc-container-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-xl);
+      overflow: hidden;
+    }
+
+    .calc-dashboard-header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #fff;
+      padding: 2.25rem 2.5rem;
       position: relative;
-      background: #ffffff;
-      transition: var(--transition-smooth);
     }
 
-    .pricing-card-highlight {
-      border: 2px solid var(--accent-blue);
-      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.08);
-      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+    .calc-dash-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #34d399;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.3rem 0.75rem;
+      border-radius: 9999px;
+      margin-bottom: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
-    .pricing-badge-accent {
-      position: absolute;
-      top: -12px;
-      right: 24px;
-      background: var(--accent-blue);
-      color: #ffffff;
+    .calc-dash-title {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .calc-dash-desc {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      max-width: 680px;
+    }
+
+    /* Vibrant Financial Stat Cards (Profit-Loss & Savings Theme) */
+    .calc-metrics-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      padding: 1.75rem 2rem;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .metric-badge-box {
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      border: 1px solid transparent;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Card 1: Agency Benchmark (Loss/Expense benchmark) */
+    .metric-badge-box.benchmark {
+      background: #fff;
+      border-color: #e2e8f0;
+    }
+    .metric-badge-box.benchmark .metric-val {
+      color: #64748b;
+    }
+
+    /* Card 2: Fixed Advisory Fee (Secure Core) */
+    .metric-badge-box.advisory {
+      background: #eff6ff;
+      border-color: #bfdbfe;
+    }
+    .metric-badge-box.advisory .metric-val {
+      color: var(--accent-blue);
+    }
+
+    /* Card 3: Agency Savings / Value Margin (PROFIT GREEN) */
+    .metric-badge-box.savings {
+      background: #ecfdf5;
+      border-color: #a7f3d0;
+    }
+    .metric-badge-box.savings .metric-val {
+      color: var(--profit-green);
+    }
+
+    /* Card 4: Optional Add-on Subtotal (DYNAMIC AMBER/PURPLE) */
+    .metric-badge-box.addons {
+      background: #fefce8;
+      border-color: #fde68a;
+    }
+    .metric-badge-box.addons .metric-val {
+      color: #b45309;
+    }
+
+    .metric-label {
       font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: 0.06em;
       text-transform: uppercase;
-      padding: 4px 12px;
-      border-radius: 9999px;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+      color: var(--text-muted);
     }
 
-    .price-value-primary {
-      font-size: 2.3rem;
+    .metric-val {
+      font-size: 1.45rem;
+      font-weight: 800;
+      line-height: 1.2;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .metric-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+    }
+
+    /* Calculator Main Layout */
+    .calc-body-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    .calc-items-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .calc-group-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary-navy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.85rem;
+    }
+
+    .calc-list-wrapper {
+      max-height: 380px;
+      overflow-y: auto;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.5rem;
+      background: #ffffff;
+    }
+
+    /* Custom Checkbox Item */
+    .calc-check-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0.85rem;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      cursor: pointer;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .calc-check-item:last-child {
+      border-bottom: none;
+    }
+
+    .calc-check-item:hover {
+      background: var(--bg-light);
+    }
+
+    .calc-check-item input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      accent-color: var(--accent-blue);
+      cursor: pointer;
+    }
+
+    .calc-check-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex: 1;
+    }
+
+    .calc-item-name {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .calc-item-cost {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* Summary Panel (Right side) */
+    .calc-summary-panel {
+      background: var(--bg-light);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .summary-heading {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--primary-navy);
+    }
+
+    .summary-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .summary-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.88rem;
+    }
+
+    .summary-row.total-row {
+      padding-top: 1rem;
+      border-top: 2px dashed var(--border-color);
+      font-size: 1.05rem;
       font-weight: 800;
       color: var(--primary-navy);
-      letter-spacing: -0.03em;
-      line-height: 1.1;
     }
 
-    .price-value-accent {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: var(--accent-blue);
-      letter-spacing: -0.03em;
-      line-height: 1.1;
+    .roi-callout {
+      background: var(--profit-green-bg);
+      border: 1px solid var(--profit-green-border);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      margin-bottom: 1.5rem;
     }
 
-    /* Responsibility Number Pill */
-    .num-pill {
-      display: inline-flex;
+    .roi-callout-header {
+      display: flex;
       align-items: center;
-      justify-content: center;
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      background-color: #f1f5f9;
-      color: var(--accent-blue);
+      gap: 0.5rem;
+      color: var(--profit-green);
       font-weight: 700;
-      font-size: 1rem;
-      letter-spacing: -0.02em;
-      flex-shrink: 0;
-      border: 1px solid #e2e8f0;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.35rem;
     }
 
-    /* Timeline Stepper */
-    .timeline-step-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background-color: var(--accent-blue);
-      color: #ffffff;
+    .roi-callout-text {
+      font-size: 0.82rem;
+      color: #065f46;
+      line-height: 1.45;
+    }
+
+    .calc-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-direction: column;
+    }
+
+    /* ==========================================================================
+       9. INVESTMENT & MILESTONES (PRESERVED ₹50,000)
+       ========================================================================== */
+    .investment-card {
+      background: #fff;
+      border: 2px solid var(--accent-blue);
+      border-radius: var(--radius-xl);
+      padding: 3rem 2.5rem;
+      box-shadow: var(--shadow-lg);
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .fee-badge {
+      display: inline-block;
+      font-size: 0.8rem;
       font-weight: 700;
-      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.35rem 1rem;
+      border-radius: 9999px;
+      background: var(--accent-light);
+      color: var(--accent-blue);
       margin-bottom: 1rem;
+    }
+
+    .fee-large {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--primary-navy);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+    }
+
+    .fee-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 580px;
+      margin: 0 auto 2.5rem;
     }
 
     /* Milestone Progress Bar */
     .milestone-progress {
+      display: flex;
       height: 12px;
       border-radius: 9999px;
-      background-color: #e2e8f0;
       overflow: hidden;
+      background: #e2e8f0;
+      margin-bottom: 2.5rem;
+    }
+
+    .bar-segment {
+      height: 100%;
+      transition: width 0.4s ease;
+    }
+
+    .bar-seg-1 { width: 60%; background: var(--accent-blue); }
+    .bar-seg-2 { width: 20%; background: #3b82f6; opacity: 0.85; }
+    .bar-seg-3 { width: 20%; background: #60a5fa; opacity: 0.7; }
+
+    .milestones-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      text-align: left;
+    }
+
+    .milestone-box {
+      background: var(--bg-light);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
       display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    .progress-segment-1 {
-      width: 60%;
-      background-color: var(--accent-blue);
-    }
-
-    .progress-segment-2 {
-      width: 20%;
-      background-color: #3b82f6;
-    }
-
-    .progress-segment-3 {
-      width: 20%;
-      background-color: #60a5fa;
-    }
-
-    /* Terms List Styling */
-    .terms-item {
+    .m-header {
       display: flex;
-      gap: 12px;
-      margin-bottom: 1rem;
-      font-size: 0.95rem;
-      color: #334155;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
     }
 
-    .terms-item i {
+    .m-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      background: #e2e8f0;
+      color: var(--text-dark);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    .m-pct {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 0.85rem;
       color: var(--accent-blue);
-      font-size: 1.1rem;
-      line-height: 1.4;
-      flex-shrink: 0;
     }
 
-    /* Reduced Motion */
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-      * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
+    .m-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--primary-navy);
+    }
+
+    .m-amount {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--primary-navy);
+      margin-bottom: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .m-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
     }
 
     /* ==========================================================================
-       Print / PDF Specific Styles
+       10. TIMELINE, TERMS, TABLES & FOOTER
        ========================================================================== */
-    @media print {
-      body {
-        background-color: #ffffff !important;
-        color: #000000 !important;
-        font-size: 11pt;
+    .timeline-wrapper {
+      max-width: 820px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .timeline-step {
+      display: flex;
+      gap: 1.5rem;
+      background: #fff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.75rem;
+      align-items: flex-start;
+    }
+
+    .step-marker {
+      width: 36px;
+      height: 36px;
+      background: var(--accent-light);
+      color: var(--accent-blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    .terms-box {
+      max-width: 860px;
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
+    }
+
+    .terms-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      font-size: 0.92rem;
+    }
+
+    .terms-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .terms-list li i {
+      color: var(--accent-blue);
+      margin-top: 0.25rem;
+    }
+
+    /* Agency Benchmarks 3 Cards */
+    .agency-tiers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .agency-tier-card {
+      background: #fff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--primary-navy);
+      color: #94a3b8;
+      padding: 4rem 0 2.5rem;
+      font-size: 0.9rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-brand h4 {
+      color: #fff;
+      font-size: 1.25rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.82rem;
+    }
+
+    /* ==========================================================================
+       11. RESPONSIVE BREAKPOINTS
+       ========================================================================== */
+    @media (max-width: 992px) {
+      .hero-price-grid,
+      .resp-grid,
+      .agency-tiers-grid,
+      .benefits-grid {
+        grid-template-columns: 1fr;
       }
 
-      .no-print,
-      .navbar,
+      .calc-body-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .calc-metrics-row {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .milestones-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .calc-metrics-row {
+        grid-template-columns: 1fr;
+      }
+
+      .section-padding {
+        padding: 3.5rem 0;
+      }
+
+      .hero-title {
+        font-size: 1.95rem;
+      }
+
+      .price-card-amount {
+        font-size: 2rem;
+      }
+
+      .fee-large {
+        font-size: 2.5rem;
+      }
+
+      .footer-content, .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    /* Print View */
+    @media print {
+      .site-nav,
+      .nav-hamburger-btn,
+      .offcanvas-menu,
+      .menu-overlay,
+      .calc-actions,
       .btn,
-      #printBtn {
+      .calc-check-item input[type="checkbox"] {
         display: none !important;
       }
 
-      .section-alt {
-        background-color: #ffffff !important;
-        border: none !important;
+      body {
+        color: #000;
+        background: #fff;
       }
 
-      .card-proposal,
-      .pricing-card-comparison,
-      .pricing-card-highlight {
+      .price-card, .investment-card, .calc-container-card {
         box-shadow: none !important;
-        border: 1px solid #cccccc !important;
-        break-inside: avoid;
-        page-break-inside: avoid;
-      }
-
-      .price-value-primary,
-      .price-value-accent {
-        color: #000000 !important;
-      }
-
-      a {
-        text-decoration: none !important;
-        color: #000000 !important;
-      }
-
-      .container {
-        max-width: 100% !important;
-        width: 100% !important;
-        padding: 0 !important;
-      }
-
-      .py-5 {
-        padding-top: 1.5rem !important;
-        padding-bottom: 1.5rem !important;
+        border: 1px solid #999 !important;
       }
     }
   </style>
@@ -379,736 +1357,1308 @@
 <body>
 
   <!-- ==========================================================================
-       Section 1: Navigation
+       NAVIGATION WITH UNIVERSAL HAMBURGER DRAWER
        ========================================================================== -->
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-custom sticky-top" aria-label="Main Navigation">
-      <div class="container py-1">
-        <!-- Brand & Badge -->
-        <a class="navbar-brand d-flex align-items-center gap-2" href="#">
-          <span class="navbar-brand-title">FCS Consultancy</span>
-          <span class="badge badge-navy badge-pill-custom d-none d-sm-inline-flex">
-            Management System Proposal
-          </span>
-        </a>
+  <header class="site-nav">
+    <div class="container nav-inner">
+      <a href="#hero" class="nav-brand">
+        <span class="brand-title">FCS Consultancy</span>
+        <span class="brand-subtitle">Management System Proposal</span>
+      </a>
 
-        <!-- Mobile Toggler -->
-        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="bi bi-list fs-2 text-dark"></i>
+      <div class="nav-right-actions">
+        <!-- Universal Hamburger Button for Desktop, Tablet, and Mobile -->
+        <button class="nav-hamburger-btn" id="openMenuBtn" aria-label="Open Navigation Menu">
+          <i class="fa-solid fa-bars"></i>
+          <span>Menu</span>
         </button>
 
-        <!-- Nav Links & CTAs -->
-        <div class="collapse navbar-collapse" id="navContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
-            <li class="nav-item">
-              <a class="nav-link" href="#overview">Overview</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#responsibilities">Responsibilities</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#investment">Investment</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#timeline">Timeline</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#terms">Terms</a>
-            </li>
-          </ul>
-
-          <div class="d-flex align-items-center gap-2 ms-lg-3 mt-3 mt-lg-0">
-            <!-- Print / PDF Button -->
-            <button id="printBtn" class="btn btn-corporate-outline" type="button" aria-label="Print or Save as PDF" onclick="window.print()">
-              <i class="bi bi-printer"></i>
-              <span>Print / PDF</span>
-            </button>
-            <!-- Primary Action -->
-            <a href="#cta" class="btn btn-corporate-primary">
-              <i class="bi bi-chat-dots-fill"></i>
-              <span>Discuss Project</span>
-            </a>
-          </div>
-        </div>
+        <button class="btn btn-secondary" onclick="window.print()" title="Print Proposal or Save as PDF" style="font-size: 0.85rem; padding: 0.5rem 0.9rem;">
+          <i class="fa-solid fa-print"></i>
+          <span class="d-none-sm">PDF / Print</span>
+        </button>
+        
+        <a href="#contact" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">
+          Discuss Project
+        </a>
       </div>
-    </nav>
+    </div>
   </header>
 
-  <main>
-    <!-- ==========================================================================
-         Section 2: Hero Section
-         ========================================================================== -->
-    <section class="py-5" id="hero">
-      <div class="container py-lg-4">
-        <!-- Label & Titles -->
-        <div class="text-center max-w-750 mx-auto mb-5">
-          <span class="badge badge-blue badge-pill-custom mb-3">
-            <i class="bi bi-file-earmark-text"></i> PROJECT PROPOSAL
-          </span>
-          <h1 class="display-5 fw-bold text-dark tracking-tight mb-2">
-            FCS Consultancy Management System
-          </h1>
-          <p class="h4 text-primary fw-semibold mb-3">
-            Project Planning &amp; Guided Implementation Support
-          </p>
-          <p class="section-desc">
-            A structured approach to planning, designing, and guiding the implementation of a custom PHP-based consultancy management system using AI-assisted development tools.
-          </p>
-        </div>
+  <!-- Offcanvas Navigation Drawer Overlay -->
+  <div class="menu-overlay" id="menuOverlay"></div>
 
-        <!-- Price Comparison Cards -->
-        <div class="row g-4 justify-content-center mb-4">
-          <!-- Card 1: Estimated Full Development Value -->
-          <div class="col-md-6 col-lg-5">
-            <div class="pricing-card-comparison">
-              <div class="text-muted small fw-semibold text-uppercase mb-2">Estimated Full Development Value</div>
-              <div class="price-value-primary mb-3">₹2,00,000 – ₹3,00,000</div>
-              <p class="text-muted small mb-0">
-                Indicative budget for full development by a software company.
-              </p>
-            </div>
-          </div>
+  <!-- Offcanvas Navigation Drawer -->
+  <aside class="offcanvas-menu" id="offcanvasMenu" aria-hidden="true">
+    <div class="offcanvas-header">
+      <div>
+        <h4 style="font-size: 1.05rem; margin-bottom: 0.15rem;">Proposal Navigation</h4>
+        <p style="font-size: 0.75rem; color: var(--text-muted);">FCS Consultancy Management System</p>
+      </div>
+      <button class="close-menu-btn" id="closeMenuBtn" aria-label="Close Navigation Menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
 
-          <!-- Card 2: My Professional Fee -->
-          <div class="col-md-6 col-lg-5">
-            <div class="pricing-card-comparison pricing-card-highlight">
-              <span class="pricing-badge-accent">Selected Model</span>
-              <div class="text-primary small fw-semibold text-uppercase mb-2">My Professional Fee</div>
-              <div class="price-value-accent mb-3">₹50,000</div>
-              <p class="text-dark small fw-medium mb-0">
-                Project planning, system architecture, and guided implementation support.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Disclaimer -->
-        <div class="text-center mb-4">
-          <p class="text-muted small mb-0">
-            <i class="bi bi-info-circle me-1"></i> Development value is an estimate for budgeting purposes, not a confirmed third-party quotation.
-          </p>
-        </div>
-
-        <!-- Action Buttons -->
-        <div class="d-flex flex-wrap justify-content-center gap-3 pt-2">
-          <a href="#responsibilities" class="btn btn-corporate-primary px-4 py-2">
-            <i class="bi bi-list-check"></i>
-            <span>View Project Scope</span>
+    <div class="offcanvas-body">
+      <ul class="nav-links-list">
+        <li>
+          <a href="#hero" class="nav-link-item menu-link">
+            <i class="fa-solid fa-house"></i> Overview & Pricing
           </a>
-          <a href="#investment" class="btn btn-corporate-outline px-4 py-2">
-            <i class="bi bi-cash-stack"></i>
-            <span>View Payment Plan</span>
+        </li>
+        <li>
+          <a href="#benefits" class="nav-link-item menu-link">
+            <i class="fa-solid fa-shield-halved"></i> Strategic Advantages
+          </a>
+        </li>
+        <li>
+          <a href="#overview" class="nav-link-item menu-link">
+            <i class="fa-solid fa-diagram-project"></i> System Scope
+          </a>
+        </li>
+        <li>
+          <a href="#responsibilities" class="nav-link-item menu-link">
+            <i class="fa-solid fa-list-check"></i> 10 Responsibilities
+          </a>
+        </li>
+        <li>
+          <a href="#crud" class="nav-link-item menu-link">
+            <i class="fa-solid fa-database"></i> CRUD & Architecture
+          </a>
+        </li>
+        <li>
+          <a href="#workflows" class="nav-link-item menu-link">
+            <i class="fa-solid fa-network-wired"></i> Connected Workflows
+          </a>
+        </li>
+        <li>
+          <a href="#roles" class="nav-link-item menu-link">
+            <i class="fa-solid fa-users-gear"></i> 7 Role Dashboards
+          </a>
+        </li>
+        <li>
+          <a href="#agency-comparison" class="nav-link-item menu-link">
+            <i class="fa-solid fa-building-columns"></i> Agency Benchmarks
+          </a>
+        </li>
+        <li>
+          <a href="#calculator" class="nav-link-item menu-link">
+            <i class="fa-solid fa-calculator"></i> Price & ROI Calculator
+          </a>
+        </li>
+        <li>
+          <a href="#investment" class="nav-link-item menu-link">
+            <i class="fa-solid fa-file-invoice-dollar"></i> Investment & Milestones
+          </a>
+        </li>
+        <li>
+          <a href="#timeline" class="nav-link-item menu-link">
+            <i class="fa-solid fa-timeline"></i> Implementation Journey
+          </a>
+        </li>
+        <li>
+          <a href="#terms" class="nav-link-item menu-link">
+            <i class="fa-solid fa-handshake"></i> Scope & Terms
+          </a>
+        </li>
+      </ul>
+
+      <div class="offcanvas-footer">
+        <a href="#contact" class="btn btn-primary menu-link" style="width: 100%;">
+          <i class="fa-solid fa-comments"></i> Discuss Project
+        </a>
+        <button class="btn btn-secondary" onclick="window.print()" style="width: 100%;">
+          <i class="fa-solid fa-file-arrow-down"></i> Save as PDF
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       SECTION 2: HERO SECTION & COMPARATIVE PRICING
+       ========================================================================== -->
+  <section class="hero-section" id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="section-pill">PROJECT PROPOSAL</span>
+        <h1 class="hero-title">FCS Consultancy Management System</h1>
+        <p class="hero-subtitle">Project Planning & Guided Implementation Support</p>
+        <p class="hero-desc">
+          A structured approach to planning, designing, and guiding the implementation of a custom PHP-based consultancy management system using AI-assisted development tools.
+        </p>
+
+        <div class="hero-cta-buttons">
+          <a href="#responsibilities" class="btn btn-primary">
+            <i class="fa-solid fa-arrow-down"></i> View Project Scope
+          </a>
+          <a href="#investment" class="btn btn-secondary">
+            <i class="fa-solid fa-wallet"></i> View Payment Plan
+          </a>
+          <a href="#calculator" class="btn btn-outline">
+            <i class="fa-solid fa-calculator"></i> ROI & Price Estimator
           </a>
         </div>
       </div>
-    </section>
 
-    <!-- ==========================================================================
-         Section 3: Project Overview
-         ========================================================================== -->
-    <section class="py-5 section-alt" id="overview">
-      <div class="container py-lg-4">
-        <div class="text-center mb-5">
-          <span class="badge badge-navy badge-pill-custom mb-2">System Vision</span>
-          <h2 class="section-title mb-3">A Clear Plan for Your Business Management System</h2>
-          <p class="section-desc">
-            The objective is to plan and guide the implementation of a centralized management system that helps FCS Consultancy organize its business operations, employee records, financial activities, and administrative workflows.
+      <!-- Two Prominent Price Cards Side by Side -->
+      <div class="hero-price-grid">
+        <!-- Card 1: Estimated Full Development Value -->
+        <div class="price-card">
+          <span class="price-card-tag">Market Reference</span>
+          <p class="price-card-title">Estimated Full Development Value</p>
+          <div class="price-card-amount">₹2,00,000 – ₹3,00,000</div>
+          <p class="price-card-desc">
+            Indicative budget for full software development by an external software agency or IT development team.
           </p>
-          <div class="alert alert-light border border-slate-200 d-inline-block small text-muted py-2 px-3 mt-2 rounded-3">
-            <i class="bi bi-info-circle-fill text-primary me-1"></i> <strong>Note:</strong> The modules below represent planned system capabilities to be guided during development.
+        </div>
+
+        <!-- Card 2: My Professional Fee -->
+        <div class="price-card featured">
+          <span class="price-card-tag"><i class="fa-solid fa-star"></i> High-Leverage Advisory</span>
+          <p class="price-card-title">My Professional Fee</p>
+          <div class="price-card-amount">₹50,000</div>
+          <p class="price-card-desc">
+            Project planning, system architecture, database design, prompt engineering, and guided implementation support.
+          </p>
+        </div>
+      </div>
+
+      <div class="hero-disclaimer-box">
+        <i class="fa-solid fa-circle-info" style="color: var(--accent-blue); margin-right: 0.35rem;"></i>
+        Development value is an estimate for budgeting purposes, not a confirmed third-party quotation.
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION: STRATEGIC CLIENT ADVANTAGES & MUTUAL BENEFITS
+       ========================================================================== -->
+  <section class="section-padding bg-light-alt" id="benefits">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-pill">MUTUAL BENEFIT & STRATEGY</span>
+        <h2 class="section-title">The Smartest Way to Build FCS Management</h2>
+        <p class="section-desc">
+          Why structured advisory delivers 4x greater value than hiring an expensive agency, while maintaining total architectural control.
+        </p>
+      </div>
+
+      <div class="benefits-grid">
+        <div class="benefit-item-card">
+          <div class="benefit-badge">
+            <i class="fa-solid fa-piggy-bank"></i> 75% Capital Savings
+          </div>
+          <h3 class="benefit-title">Zero Agency Overhead</h3>
+          <p class="benefit-desc">
+            Instead of spending ₹2,00,000 to ₹3,00,000 upfront with high software agency margins, you invest just ₹50,000 for senior architectural guidance while utilizing internal or freelance coders efficiently.
+          </p>
+        </div>
+
+        <div class="benefit-item-card">
+          <div class="benefit-badge">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> 10x AI Speed
+          </div>
+          <h3 class="benefit-title">AI-Assisted Efficiency</h3>
+          <p class="benefit-desc">
+            We provide exact prompt engineering and architectural workflows for ChatGPT & Claude, allowing your developer to code complex PHP & MySQL modules in hours instead of weeks.
+          </p>
+        </div>
+
+        <div class="benefit-item-card">
+          <div class="benefit-badge">
+            <i class="fa-solid fa-lock"></i> 100% Code Ownership
+          </div>
+          <h3 class="benefit-title">Independent IP & Control</h3>
+          <p class="benefit-desc">
+            You maintain full ownership of the source code, database schemas, and hosting. No recurring agency retainer locks, hidden licensing fees, or proprietary platform dependencies.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 3: PROJECT OVERVIEW
+       ========================================================================== -->
+  <section class="section-padding" id="overview">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-pill">PLANNED CAPABILITIES</span>
+        <h2 class="section-title">A Clear Plan for Your Business Management System</h2>
+        <p class="section-desc">
+          The objective is to plan and guide the implementation of a centralized management system that helps FCS Consultancy organize its business operations, employee records, financial activities, and administrative workflows.
+        </p>
+      </div>
+
+      <div class="benefits-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+        <div class="benefit-item-card">
+          <div style="font-size: 1.5rem; color: var(--accent-blue); margin-bottom: 0.75rem;"><i class="fa-solid fa-users"></i></div>
+          <h3 class="benefit-title">Employee Management</h3>
+          <p class="benefit-desc">Organize employee information, attendance, and leave records within unified profiles.</p>
+        </div>
+
+        <div class="benefit-item-card">
+          <div style="font-size: 1.5rem; color: var(--accent-blue); margin-bottom: 0.75rem;"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+          <h3 class="benefit-title">Financial Management</h3>
+          <p class="benefit-desc">Plan salary, payroll, invoice, income, expenses, and revenue tracking accurately.</p>
+        </div>
+
+        <div class="benefit-item-card">
+          <div style="font-size: 1.5rem; color: var(--accent-blue); margin-bottom: 0.75rem;"><i class="fa-solid fa-sliders"></i></div>
+          <h3 class="benefit-title">Centralized Administration</h3>
+          <p class="benefit-desc">Structure the admin panel, user roles, permissions, and management workflows securely.</p>
+        </div>
+
+        <div class="benefit-item-card">
+          <div style="font-size: 1.5rem; color: var(--accent-blue); margin-bottom: 0.75rem;"><i class="fa-solid fa-chart-line"></i></div>
+          <h3 class="benefit-title">Reporting & Insights</h3>
+          <p class="benefit-desc">Plan revenue summaries, expense reports, outstanding balances, and business statistics.</p>
+        </div>
+      </div>
+
+      <p style="text-align: center; margin-top: 2rem; font-size: 0.82rem; color: var(--text-muted);">
+        <em>Note: The items listed above represent planned capabilities to be architected and implemented during the project.</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 4: MY 10 RESPONSIBILITIES
+       ========================================================================== -->
+  <section class="section-padding bg-light-alt" id="responsibilities">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-pill">PROFESSIONAL SERVICE SCOPE</span>
+        <h2 class="section-title">What My Professional Service Includes</h2>
+        <p class="section-desc">
+          End-to-end project planning and guided implementation support, with coding handled by the client/developer.
+        </p>
+      </div>
+
+      <div class="resp-grid">
+        <div class="resp-card">
+          <div class="resp-number">01</div>
+          <div>
+            <h3 class="resp-title">Requirement Analysis & Planning</h3>
+            <p class="resp-desc">Understand business requirements, identify modules, define project scope, and prepare the development roadmap.</p>
           </div>
         </div>
 
-        <!-- 4 Feature Cards -->
-        <div class="row g-4">
-          <!-- Feature 1 -->
-          <div class="col-md-6 col-lg-3">
-            <div class="card-proposal h-100 p-4">
-              <div class="num-pill mb-3 text-primary">
-                <i class="bi bi-people-fill"></i>
-              </div>
-              <h3 class="h5 fw-bold mb-2">1. Employee Management</h3>
-              <p class="text-muted small mb-0">
-                Organize employee information, attendance, and leave records.
-              </p>
-            </div>
+        <div class="resp-card">
+          <div class="resp-number">02</div>
+          <div>
+            <h3 class="resp-title">System Architecture</h3>
+            <p class="resp-desc">Plan the PHP project structure, folder organization, reusable components, file responsibilities, and development workflow.</p>
           </div>
+        </div>
 
-          <!-- Feature 2 -->
-          <div class="col-md-6 col-lg-3">
-            <div class="card-proposal h-100 p-4">
-              <div class="num-pill mb-3 text-primary">
-                <i class="bi bi-wallet2"></i>
-              </div>
-              <h3 class="h5 fw-bold mb-2">2. Financial Management</h3>
-              <p class="text-muted small mb-0">
-                Plan salary, payroll, invoice, income, expenses, and revenue tracking.
-              </p>
-            </div>
+        <div class="resp-card">
+          <div class="resp-number">03</div>
+          <div>
+            <h3 class="resp-title">UI/UX & Dashboard Planning</h3>
+            <p class="resp-desc">Define the dashboard layout, navigation, tables, forms, charts, revenue summaries, and business statistics.</p>
           </div>
+        </div>
 
-          <!-- Feature 3 -->
-          <div class="col-md-6 col-lg-3">
-            <div class="card-proposal h-100 p-4">
-              <div class="num-pill mb-3 text-primary">
-                <i class="bi bi-shield-lock-fill"></i>
-              </div>
-              <h3 class="h5 fw-bold mb-2">3. Centralized Administration</h3>
-              <p class="text-muted small mb-0">
-                Structure the admin panel, user roles, permissions, and management workflows.
-              </p>
-            </div>
+        <div class="resp-card">
+          <div class="resp-number">04</div>
+          <div>
+            <h3 class="resp-title">AI-Assisted Development Guidance</h3>
+            <p class="resp-desc">Prepare effective ChatGPT prompts and guide the use of Google Gemini for code generation, refinement, and troubleshooting.</p>
           </div>
+        </div>
 
-          <!-- Feature 4 -->
-          <div class="col-md-6 col-lg-3">
-            <div class="card-proposal h-100 p-4">
-              <div class="num-pill mb-3 text-primary">
-                <i class="bi bi-graph-up-arrow"></i>
-              </div>
-              <h3 class="h5 fw-bold mb-2">4. Reporting &amp; Insights</h3>
-              <p class="text-muted small mb-0">
-                Plan revenue summaries, expense reports, outstanding balances, and business statistics.
-              </p>
-            </div>
+        <div class="resp-card">
+          <div class="resp-number">05</div>
+          <div>
+            <h3 class="resp-title">Database Design & Setup</h3>
+            <p class="resp-desc">Plan MySQL tables, fields, relationships, and database structure. Guide XAMPP and local development environment setup.</p>
+          </div>
+        </div>
+
+        <div class="resp-card">
+          <div class="resp-number">06</div>
+          <div>
+            <h3 class="resp-title">Management Module Planning</h3>
+            <p class="resp-desc">Guide implementation planning for employee management, salary, payroll, invoices, clients, projects, attendance, expenses, and revenue.</p>
+          </div>
+        </div>
+
+        <div class="resp-card">
+          <div class="resp-number">07</div>
+          <div>
+            <h3 class="resp-title">Admin Panel & Access Control</h3>
+            <p class="resp-desc">Plan login, authentication, user roles, permissions, and CRUD operations for managing records.</p>
+          </div>
+        </div>
+
+        <div class="resp-card">
+          <div class="resp-number">08</div>
+          <div>
+            <h3 class="resp-title">Integration, Testing & Debugging</h3>
+            <p class="resp-desc">Assist with connecting modules, identifying errors, troubleshooting PHP/MySQL issues, and conducting functional tests.</p>
+          </div>
+        </div>
+
+        <div class="resp-card">
+          <div class="resp-number">09</div>
+          <div>
+            <h3 class="resp-title">Hosting & Deployment Guidance</h3>
+            <p class="resp-desc">Explain hosting requirements, domain configuration, live database migration, environment settings, and deployment checks.</p>
+          </div>
+        </div>
+
+        <div class="resp-card">
+          <div class="resp-number">10</div>
+          <div>
+            <h3 class="resp-title">Documentation & Final Handover</h3>
+            <p class="resp-desc">Prepare implementation documentation, explain workflows, and guide the final project walkthrough.</p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ==========================================================================
-         Section 4: My 10 Responsibilities
-         ========================================================================== -->
-    <section class="py-5" id="responsibilities">
-      <div class="container py-lg-4">
-        <div class="text-center mb-5">
-          <span class="badge badge-blue badge-pill-custom mb-2">Scope of Consulting</span>
-          <h2 class="section-title mb-2">What My Professional Service Includes</h2>
-          <p class="section-desc fw-medium text-dark">
-            End-to-end project planning and guided implementation support, with coding handled by the client/developer.
+  <!-- ==========================================================================
+       SECTION 5: COMPLETE CRUD OPERATIONS
+       ========================================================================== -->
+  <section class="section-padding" id="crud">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-pill">DATA INTEGRITY & ARCHITECTURE</span>
+        <h2 class="section-title">Complete Management. Complete Control.</h2>
+        <p class="section-desc">
+          Every approved management module should support the necessary record-management operations, with connected data, consistent validation, and role-based access permissions.
+        </p>
+      </div>
+
+      <div class="crud-grid">
+        <div class="crud-card">
+          <span class="crud-num">01</span>
+          <h4 class="crud-title">Create</h4>
+          <p class="crud-desc">Add new records through validated forms.</p>
+        </div>
+        <div class="crud-card">
+          <span class="crud-num">02</span>
+          <h4 class="crud-title">Read</h4>
+          <p class="crud-desc">View records through tables, detail pages, dashboards, and reports.</p>
+        </div>
+        <div class="crud-card">
+          <span class="crud-num">03</span>
+          <h4 class="crud-title">Update</h4>
+          <p class="crud-desc">Edit existing records and save changes securely.</p>
+        </div>
+        <div class="crud-card">
+          <span class="crud-num">04</span>
+          <h4 class="crud-title">Delete</h4>
+          <p class="crud-desc">Delete or archive records according to permissions and business rules.</p>
+        </div>
+        <div class="crud-card">
+          <span class="crud-num">05</span>
+          <h4 class="crud-title">Search</h4>
+          <p class="crud-desc">Find records by name, ID, status, date, or other relevant fields.</p>
+        </div>
+        <div class="crud-card">
+          <span class="crud-num">06</span>
+          <h4 class="crud-title">Filter</h4>
+          <p class="crud-desc">Filter records by department, project, employee, partner, status, and date range.</p>
+        </div>
+        <div class="crud-card">
+          <span class="crud-num">07</span>
+          <h4 class="crud-title">Sort</h4>
+          <p class="crud-desc">Sort table columns dynamically (ascending/descending).</p>
+        </div>
+        <div class="crud-card">
+          <span class="crud-num">08</span>
+          <h4 class="crud-title">Pagination</h4>
+          <p class="crud-desc">Display large datasets in manageable pages for fast rendering.</p>
+        </div>
+        <div class="crud-card">
+          <span class="crud-num">09</span>
+          <h4 class="crud-title">Bulk Import</h4>
+          <p class="crud-desc">Import supported CSV or Excel files using a validated import workflow.</p>
+        </div>
+        <div class="crud-card">
+          <span class="crud-num">10</span>
+          <h4 class="crud-title">Bulk Export</h4>
+          <p class="crud-desc">Export permitted records to CSV or Excel, and PDF where appropriate.</p>
+        </div>
+        <div class="crud-card">
+          <span class="crud-num">11</span>
+          <h4 class="crud-title">Bulk Actions</h4>
+          <p class="crud-desc">Select multiple records and perform permitted actions, such as status updates or archiving.</p>
+        </div>
+        <div class="crud-card">
+          <span class="crud-num">12</span>
+          <h4 class="crud-title">Validation</h4>
+          <p class="crud-desc">Validate data both client-side and server-side before saving or importing.</p>
+        </div>
+        <div class="crud-card">
+          <span class="crud-num">13</span>
+          <h4 class="crud-title">Duplicate Prevention</h4>
+          <p class="crud-desc">Detect and flag likely duplicate records before committing to the database.</p>
+        </div>
+        <div class="crud-card">
+          <span class="crud-num">14</span>
+          <h4 class="crud-title">Audit History</h4>
+          <p class="crud-desc">Track important changes to sensitive or financial records with timestamps.</p>
+        </div>
+      </div>
+
+      <div class="notice-box">
+        <strong>Important Data Security Rules:</strong>
+        <ul style="margin-top: 0.5rem; padding-left: 1.25rem; list-style: disc;">
+          <li>Do not apply delete operations indiscriminately to payroll, financial transactions, invoices, or audit records. Use appropriate cancellation, reversal, or archival workflows.</li>
+          <li>Bulk exports must respect user permissions and exclude unauthorized sensitive information.</li>
+          <li>Provide an import preview, column mapping, validation report, and error summary before committing imported records.</li>
+          <li>Protect against CSV formula injection when exporting untrusted data.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 6: CONNECTED MANAGEMENT WORKFLOWS
+       ========================================================================== -->
+  <section class="section-padding bg-light-alt" id="workflows">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-pill">RELATIONAL DATA FLOW</span>
+        <h2 class="section-title">One Connected System. Every Department Working Together.</h2>
+        <p class="section-desc">
+          All management modules share a consistent database architecture, common employee/client/partner identifiers, validated relationships, and controlled workflows.
+        </p>
+      </div>
+
+      <div class="workflows-grid">
+        <div class="workflow-card">
+          <div class="workflow-header">
+            <div class="workflow-icon"><i class="fa-solid fa-money-check-dollar"></i></div>
+            <h4 style="font-size: 1.05rem;">Employee-to-Payroll Workflow</h4>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">
+            Employee records → attendance and approved leave → authorized payroll calculation → review and approval → payment status → salary slip.
           </p>
+          <div class="workflow-steps-box">
+            Employee Profile ➔ Attendance / Leaves ➔ Payroll Engine ➔ Approval ➔ Payslip PDF
+          </div>
         </div>
 
-        <!-- 10 Numbered Cards in 2-Column Grid -->
-        <div class="row g-4">
-          <!-- 01 -->
-          <div class="col-md-6">
-            <div class="card-proposal p-4 h-100 d-flex flex-row align-items-start gap-3">
-              <div class="num-pill">01</div>
-              <div>
-                <h3 class="h6 fw-bold mb-1">Requirement Analysis &amp; Planning</h3>
-                <p class="text-muted small mb-0">
-                  Understand business requirements, identify modules, define project scope, and prepare the development roadmap.
-                </p>
-              </div>
-            </div>
+        <div class="workflow-card">
+          <div class="workflow-header">
+            <div class="workflow-icon"><i class="fa-solid fa-file-invoice"></i></div>
+            <h4 style="font-size: 1.05rem;">CRM-to-Invoice Workflow</h4>
           </div>
-
-          <!-- 02 -->
-          <div class="col-md-6">
-            <div class="card-proposal p-4 h-100 d-flex flex-row align-items-start gap-3">
-              <div class="num-pill">02</div>
-              <div>
-                <h3 class="h6 fw-bold mb-1">System Architecture</h3>
-                <p class="text-muted small mb-0">
-                  Plan the PHP project structure, folder organization, reusable components, file responsibilities, and development workflow.
-                </p>
-              </div>
-            </div>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">
+            Lead → client → project or service → invoice → payment tracking → financial reports.
+          </p>
+          <div class="workflow-steps-box">
+            Lead Capture ➔ Verified Client ➔ Project Scope ➔ Invoice ➔ Payment Tracking
           </div>
+        </div>
 
-          <!-- 03 -->
-          <div class="col-md-6">
-            <div class="card-proposal p-4 h-100 d-flex flex-row align-items-start gap-3">
-              <div class="num-pill">03</div>
-              <div>
-                <h3 class="h6 fw-bold mb-1">UI/UX &amp; Dashboard Planning</h3>
-                <p class="text-muted small mb-0">
-                  Define the dashboard layout, navigation, tables, forms, charts, revenue summaries, and business statistics.
-                </p>
-              </div>
-            </div>
+        <div class="workflow-card">
+          <div class="workflow-header">
+            <div class="workflow-icon"><i class="fa-solid fa-handshake-angle"></i></div>
+            <h4 style="font-size: 1.05rem;">Partner-to-Project Workflow</h4>
           </div>
-
-          <!-- 04 -->
-          <div class="col-md-6">
-            <div class="card-proposal p-4 h-100 d-flex flex-row align-items-start gap-3">
-              <div class="num-pill">04</div>
-              <div>
-                <h3 class="h6 fw-bold mb-1">AI-Assisted Development Guidance</h3>
-                <p class="text-muted small mb-0">
-                  Prepare effective ChatGPT prompts and guide the use of Google Gemini for code generation, refinement, and troubleshooting.
-                </p>
-              </div>
-            </div>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">
+            Partner record → assigned project → progress updates → authorized billing or payment records.
+          </p>
+          <div class="workflow-steps-box">
+            Partner Profile ➔ Project Assignment ➔ Deliverable Status ➔ Authorized Payout
           </div>
+        </div>
 
-          <!-- 05 -->
-          <div class="col-md-6">
-            <div class="card-proposal p-4 h-100 d-flex flex-row align-items-start gap-3">
-              <div class="num-pill">05</div>
-              <div>
-                <h3 class="h6 fw-bold mb-1">Database Design &amp; Setup</h3>
-                <p class="text-muted small mb-0">
-                  Plan MySQL tables, fields, relationships, and database structure. Guide XAMPP and local development environment setup.
-                </p>
-              </div>
-            </div>
+        <div class="workflow-card">
+          <div class="workflow-header">
+            <div class="workflow-icon"><i class="fa-solid fa-globe"></i></div>
+            <h4 style="font-size: 1.05rem;">Website Content Workflow</h4>
           </div>
-
-          <!-- 06 -->
-          <div class="col-md-6">
-            <div class="card-proposal p-4 h-100 d-flex flex-row align-items-start gap-3">
-              <div class="num-pill">06</div>
-              <div>
-                <h3 class="h6 fw-bold mb-1">Management Module Planning</h3>
-                <p class="text-muted small mb-0">
-                  Guide implementation planning for employee management, salary, payroll, invoices, clients, projects, attendance, expenses, and revenue.
-                </p>
-              </div>
-            </div>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">
+            Draft page → preview → approval where required → publish → update navigation and public-facing content.
+          </p>
+          <div class="workflow-steps-box">
+            Content Editor ➔ Live Preview ➔ Editorial Approval ➔ Published Navigation
           </div>
+        </div>
 
-          <!-- 07 -->
-          <div class="col-md-6">
-            <div class="card-proposal p-4 h-100 d-flex flex-row align-items-start gap-3">
-              <div class="num-pill">07</div>
-              <div>
-                <h3 class="h6 fw-bold mb-1">Admin Panel &amp; Access Control</h3>
-                <p class="text-muted small mb-0">
-                  Plan login, authentication, user roles, permissions, and CRUD operations for managing records.
-                </p>
-              </div>
-            </div>
+        <div class="workflow-card">
+          <div class="workflow-header">
+            <div class="workflow-icon"><i class="fa-solid fa-chart-pie"></i></div>
+            <h4 style="font-size: 1.05rem;">Reporting Workflow</h4>
           </div>
-
-          <!-- 08 -->
-          <div class="col-md-6">
-            <div class="card-proposal p-4 h-100 d-flex flex-row align-items-start gap-3">
-              <div class="num-pill">08</div>
-              <div>
-                <h3 class="h6 fw-bold mb-1">Integration, Testing &amp; Debugging</h3>
-                <p class="text-muted small mb-0">
-                  Assist with connecting modules, identifying errors, troubleshooting PHP/MySQL issues, and conducting functional tests.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- 09 -->
-          <div class="col-md-6">
-            <div class="card-proposal p-4 h-100 d-flex flex-row align-items-start gap-3">
-              <div class="num-pill">09</div>
-              <div>
-                <h3 class="h6 fw-bold mb-1">Hosting &amp; Deployment Guidance</h3>
-                <p class="text-muted small mb-0">
-                  Explain hosting requirements, domain configuration, live database migration, environment settings, and deployment checks.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- 10 -->
-          <div class="col-md-6">
-            <div class="card-proposal p-4 h-100 d-flex flex-row align-items-start gap-3">
-              <div class="num-pill">10</div>
-              <div>
-                <h3 class="h6 fw-bold mb-1">Documentation &amp; Final Handover</h3>
-                <p class="text-muted small mb-0">
-                  Prepare implementation documentation, explain workflows, and guide the final project walkthrough.
-                </p>
-              </div>
-            </div>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">
+            Validated database records → role-filtered dashboard statistics → filtered reports → authorized export.
+          </p>
+          <div class="workflow-steps-box">
+            Relational DB ➔ Permission Filter ➔ Role Visualizations ➔ CSV/PDF Export
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ==========================================================================
-         Section 5: Investment & Payment Plan
-         ========================================================================== -->
-    <section class="py-5 section-alt" id="investment">
-      <div class="container py-lg-4">
-        <!-- Section Header -->
-        <div class="text-center mb-5">
-          <span class="badge badge-navy badge-pill-custom mb-2">Transparent Commercials</span>
-          <h2 class="section-title mb-2">Professional Fee &amp; Payment Schedule</h2>
-          <div class="my-3">
-            <span class="display-6 fw-bold text-primary">₹50,000</span>
+  <!-- ==========================================================================
+       SECTION 7: SEVEN DASHBOARDS AND ROLE-BASED ACCESS
+       ========================================================================== -->
+  <section class="section-padding" id="roles">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-pill">ACCESS CONTROL ARCHITECTURE</span>
+        <h2 class="section-title">Seven Tailored Dashboards</h2>
+        <p class="section-desc">
+          Every dashboard displays only the relevant modules, statistics, actions, and records allowed for that role.
+        </p>
+      </div>
+
+      <div class="roles-grid">
+        <div class="role-card">
+          <div class="role-card-header">
+            <div class="role-badge">Level 1</div>
+            <h3 style="font-size: 1.15rem;">Super Admin</h3>
           </div>
-          <p class="section-desc">
-            Fixed professional fee for the agreed planning and guided implementation scope.
+          <ul class="role-list">
+            <li><i class="fa-solid fa-check"></i> Global company overview & metrics</li>
+            <li><i class="fa-solid fa-check"></i> User and role permission management</li>
+            <li><i class="fa-solid fa-check"></i> All authorized business modules</li>
+            <li><i class="fa-solid fa-check"></i> System settings and website content</li>
+            <li><i class="fa-solid fa-check"></i> Company-wide reports and audit logs</li>
+          </ul>
+        </div>
+
+        <div class="role-card">
+          <div class="role-card-header">
+            <div class="role-badge">Level 2</div>
+            <h3 style="font-size: 1.15rem;">Admin</h3>
+          </div>
+          <ul class="role-list">
+            <li><i class="fa-solid fa-check"></i> Daily operational dashboard</li>
+            <li><i class="fa-solid fa-check"></i> Employee, team & partner management</li>
+            <li><i class="fa-solid fa-check"></i> Operational reports and approvals</li>
+            <li><i class="fa-solid fa-check"></i> Project tracking & task assignments</li>
+          </ul>
+        </div>
+
+        <div class="role-card">
+          <div class="role-card-header">
+            <div class="role-badge">Level 3</div>
+            <h3 style="font-size: 1.15rem;">HR Manager</h3>
+          </div>
+          <ul class="role-list">
+            <li><i class="fa-solid fa-check"></i> Employee records and onboarding</li>
+            <li><i class="fa-solid fa-check"></i> Attendance tracking and leave requests</li>
+            <li><i class="fa-solid fa-check"></i> HR documentation and compliance reports</li>
+            <li><i class="fa-solid fa-check"></i> Salary information (when authorized)</li>
+          </ul>
+        </div>
+
+        <div class="role-card">
+          <div class="role-card-header">
+            <div class="role-badge">Level 3</div>
+            <h3 style="font-size: 1.15rem;">Finance Manager</h3>
+          </div>
+          <ul class="role-list">
+            <li><i class="fa-solid fa-check"></i> Income, expenses, invoices, & payments</li>
+            <li><i class="fa-solid fa-check"></i> Salary and payroll workflows</li>
+            <li><i class="fa-solid fa-check"></i> Financial summaries, margins, & reports</li>
+            <li><i class="fa-solid fa-check"></i> Financial approval permissions</li>
+          </ul>
+        </div>
+
+        <div class="role-card">
+          <div class="role-card-header">
+            <div class="role-badge">Level 3</div>
+            <h3 style="font-size: 1.15rem;">CRM Manager</h3>
+          </div>
+          <ul class="role-list">
+            <li><i class="fa-solid fa-check"></i> Leads, clients, enquiries, & follow-ups</li>
+            <li><i class="fa-solid fa-check"></i> Sales pipeline and deal tracking</li>
+            <li><i class="fa-solid fa-check"></i> CRM reports and conversion rates</li>
+            <li><i class="fa-solid fa-check"></i> Authorized project & invoice summaries</li>
+          </ul>
+        </div>
+
+        <div class="role-card">
+          <div class="role-card-header">
+            <div class="role-badge">Level 4</div>
+            <h3 style="font-size: 1.15rem;">Employee</h3>
+          </div>
+          <ul class="role-list">
+            <li><i class="fa-solid fa-check"></i> Own profile and attendance check-in</li>
+            <li><i class="fa-solid fa-check"></i> Leave requests and balance status</li>
+            <li><i class="fa-solid fa-check"></i> Assigned projects and tasks</li>
+            <li><i class="fa-solid fa-check"></i> Own salary slips (when enabled)</li>
+          </ul>
+        </div>
+
+        <div class="role-card">
+          <div class="role-card-header">
+            <div class="role-badge">Level 4</div>
+            <h3 style="font-size: 1.15rem;">Partner</h3>
+          </div>
+          <ul class="role-list">
+            <li><i class="fa-solid fa-check"></i> Own profile and partnership documents</li>
+            <li><i class="fa-solid fa-check"></i> Assigned projects and milestone updates</li>
+            <li><i class="fa-solid fa-check"></i> Authorized invoice & payment history</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 8: AGENCY DEVELOPMENT PRICING BENCHMARKS
+       ========================================================================== -->
+  <section class="section-padding bg-light-alt" id="agency-comparison">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-pill">MARKET BENCHMARKS</span>
+        <h2 class="section-title">What Could Full Software Development Cost?</h2>
+        <p class="section-desc">
+          Indicative development budget ranges for planning purposes, based on the type and complexity of the required software.
+        </p>
+      </div>
+
+      <div class="agency-tiers-grid">
+        <div class="agency-tier-card">
+          <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Basic Internal Management</h4>
+          <div style="font-size: 1.85rem; font-weight: 800; color: var(--primary-navy); margin-bottom: 0.75rem; font-family: 'JetBrains Mono', monospace;">
+            ₹2,00,000 – ₹3,00,000
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">
+            Suitable for a limited-scope application with selected management modules, basic CRUD operations, a database, and a small number of user roles.
           </p>
         </div>
 
-        <!-- Visual Progress Bar for 60% / 20% / 20% -->
-        <div class="max-w-750 mx-auto mb-4">
-          <div class="d-flex justify-content-between small fw-semibold text-muted mb-2">
-            <span>Milestone 01: 60% (Advance)</span>
-            <span>Milestone 02: 20%</span>
-            <span>Milestone 03: 20%</span>
+        <div class="agency-tier-card" style="border: 2px solid var(--accent-blue); background: #fafcff;">
+          <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--accent-blue);">Multi-Module Business System</h4>
+          <div style="font-size: 1.85rem; font-weight: 800; color: var(--accent-blue); margin-bottom: 0.75rem; font-family: 'JetBrains Mono', monospace;">
+            ₹4,00,000 – ₹8,00,000
           </div>
-          <div class="milestone-progress" role="progressbar" aria-label="Payment distribution breakdown" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-            <div class="progress-segment-1" title="Milestone 01 (60%)"></div>
-            <div class="progress-segment-2" title="Milestone 02 (20%)"></div>
-            <div class="progress-segment-3" title="Milestone 03 (20%)"></div>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">
+            Suitable for several connected management modules, role-specific dashboards, reporting, imports/exports, and more extensive workflows.
+          </p>
+        </div>
+
+        <div class="agency-tier-card">
+          <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Advanced Custom CRM / ERP</h4>
+          <div style="font-size: 1.85rem; font-weight: 800; color: var(--primary-navy); margin-bottom: 0.75rem; font-family: 'JetBrains Mono', monospace;">
+            ₹8,00,000 – ₹15,00,000+
           </div>
-          <div class="text-end mt-1">
-            <span class="badge bg-light text-muted border">Total: ₹30,000 + ₹10,000 + ₹10,000 = ₹50,000</span>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">
+            Suitable for advanced workflows, complex permissions, extensive integrations, more demanding security requirements, and production-grade testing.
+          </p>
+        </div>
+      </div>
+
+      <div class="hero-disclaimer-box">
+        <i class="fa-solid fa-circle-exclamation" style="color: var(--loss-amber); margin-right: 0.35rem;"></i>
+        These are indicative budgeting ranges, not confirmed quotations from specific software development agencies. Actual prices depend on the approved scope, developer or agency, design, integrations, security, testing, deployment, and support requirements.
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 9: VIBRANT INTERACTIVE PROJECT CALCULATOR & ROI DASHBOARD
+       ========================================================================== -->
+  <section class="section-padding" id="calculator">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-pill" style="background: var(--profit-green-bg); color: var(--profit-green); border-color: var(--profit-green-border);">
+          INTERACTIVE FINANCIAL ESTIMATOR
+        </span>
+        <h2 class="section-title">Custom Scope & Financial Savings Dashboard</h2>
+        <p class="section-desc">
+          Select prospective add-on modules and roles to estimate incremental development budgets while reviewing your guaranteed agency savings.
+        </p>
+      </div>
+
+      <div class="calc-container-card">
+        <!-- Dashboard Top Header -->
+        <div class="calc-dashboard-header">
+          <div class="calc-dash-badge">
+            <i class="fa-solid fa-chart-line"></i> Dynamic Cost & ROI Modeler
+          </div>
+          <h3 class="calc-dash-title">FCS System Investment & Value Analysis</h3>
+          <p class="calc-dash-desc">
+            Calculate estimated developer implementation expenses for future add-ons while visualizing the high-margin savings delivered by our guided planning framework.
+          </p>
+        </div>
+
+        <!-- 4 Vibrant Financial Metric Boxes (Profit / Savings / Advisory Theme) -->
+        <div class="calc-metrics-row">
+          <!-- Benchmark Card -->
+          <div class="metric-badge-box benchmark">
+            <span class="metric-label">Agency Dev Benchmark</span>
+            <span class="metric-val">₹2.0L – ₹3.0L</span>
+            <span class="metric-sub">Commercial Agency Baseline</span>
+          </div>
+
+          <!-- Advisory Fee (Fixed) -->
+          <div class="metric-badge-box advisory">
+            <span class="metric-label">My Advisory Fee</span>
+            <span class="metric-val">₹50,000</span>
+            <span class="metric-sub">Fixed Planning Scope</span>
+          </div>
+
+          <!-- Guaranteed Savings (VIBRANT PROFIT GREEN) -->
+          <div class="metric-badge-box savings">
+            <span class="metric-label" style="color: var(--profit-green);">Your Direct Savings</span>
+            <span class="metric-val" id="savingsMetricDisplay">₹1,50,000+</span>
+            <span class="metric-sub" style="color: #065f46;">3.0x – 5.0x Advisory ROI</span>
+          </div>
+
+          <!-- Selected Add-ons Subtotal (AMBER) -->
+          <div class="metric-badge-box addons">
+            <span class="metric-label" style="color: #b45309;">Selected Add-ons</span>
+            <span class="metric-val" id="addonSubtotalDisplay">₹0</span>
+            <span class="metric-sub" id="addonCountDisplay">0 items selected</span>
           </div>
         </div>
 
-        <!-- Milestone Cards -->
-        <div class="row g-4 mt-2">
+        <!-- Main Interactive Calculator Workspace -->
+        <div class="calc-body-grid">
+          <!-- Left Column: Checkbox Selection Groups -->
+          <div class="calc-items-section">
+            
+            <!-- Group 1: Additional Modules -->
+            <div>
+              <div class="calc-group-title">
+                <span><i class="fa-solid fa-cubes" style="color: var(--accent-blue); margin-right: 0.5rem;"></i> Select Optional Modules</span>
+                <span style="font-size: 0.78rem; font-weight: 500; color: var(--text-muted);">24 Modules</span>
+              </div>
+              <div class="calc-list-wrapper" id="modulesCheckboxList">
+                <!-- Injected via JavaScript -->
+              </div>
+            </div>
+
+            <!-- Group 2: Additional User Roles -->
+            <div>
+              <div class="calc-group-title">
+                <span><i class="fa-solid fa-user-shield" style="color: var(--accent-blue); margin-right: 0.5rem;"></i> Select Optional Roles & Dashboards</span>
+                <span style="font-size: 0.78rem; font-weight: 500; color: var(--text-muted);">10 Roles</span>
+              </div>
+              <div class="calc-list-wrapper" id="rolesCheckboxList">
+                <!-- Injected via JavaScript -->
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Live Summary & Value Callout -->
+          <div class="calc-summary-panel">
+            <div>
+              <h4 class="summary-heading">Investment Breakdown</h4>
+
+              <div class="summary-list">
+                <div class="summary-row">
+                  <span style="color: var(--text-muted);">Agreed Advisory Fee:</span>
+                  <span style="font-weight: 700; color: var(--accent-blue);">₹50,000</span>
+                </div>
+
+                <div class="summary-row">
+                  <span style="color: var(--text-muted);">Selected Add-ons (Est. Min):</span>
+                  <span style="font-weight: 700;" id="sumMinPrice">₹0</span>
+                </div>
+
+                <div class="summary-row">
+                  <span style="color: var(--text-muted);">Selected Add-ons (Est. Max):</span>
+                  <span style="font-weight: 700;" id="sumMaxPrice">₹0</span>
+                </div>
+
+                <div class="summary-row total-row">
+                  <span>Add-on Range:</span>
+                  <span style="color: #b45309;" id="sumRangeDisplay">₹0</span>
+                </div>
+              </div>
+
+              <!-- Profit & ROI Highlight Box (For Client & Side Benefit) -->
+              <div class="roi-callout">
+                <div class="roi-callout-header">
+                  <i class="fa-solid fa-sack-dollar"></i> Strategic Advantage
+                </div>
+                <p class="roi-callout-text">
+                  By utilizing guided implementation, FCS Consultancy avoids standard software agency overhead (₹2.0L–₹3.0L) while securing a structured, maintainable architecture.
+                </p>
+              </div>
+
+              <p style="font-size: 0.76rem; color: var(--text-muted); line-height: 1.45; margin-bottom: 1.5rem;">
+                * Note: Add-on values represent estimated independent coding fees for freelance implementation. The ₹50,000 professional advisory fee remains fixed for the base project scope.
+              </p>
+            </div>
+
+            <div class="calc-actions">
+              <button class="btn btn-secondary" id="resetCalcBtn" style="width: 100%;">
+                <i class="fa-solid fa-rotate-left"></i> Reset Selection
+              </button>
+              <button class="btn btn-primary" onclick="window.print()" style="width: 100%;">
+                <i class="fa-solid fa-file-pdf"></i> Export Estimate as PDF
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 10: INVESTMENT & PAYMENT PLAN (PRESERVED EXACT ₹50,000)
+       ========================================================================== -->
+  <section class="section-padding bg-light-alt" id="investment">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-pill">TRANSPARENT SCHEDULE</span>
+        <h2 class="section-title">Professional Fee & Payment Schedule</h2>
+        <p class="section-desc">
+          Fixed professional fee for the agreed planning and guided implementation scope.
+        </p>
+      </div>
+
+      <div class="investment-card">
+        <span class="fee-badge">Fixed Professional Advisory Fee</span>
+        <div class="fee-large">₹50,000</div>
+        <p class="fee-subtitle">
+          Covers end-to-end requirement analysis, system architecture, database design, prompt engineering, and guided implementation support.
+        </p>
+
+        <!-- Visual Progress Bar (60% / 20% / 20%) -->
+        <div class="milestone-progress">
+          <div class="bar-segment bar-seg-1" title="60% Advance"></div>
+          <div class="bar-segment bar-seg-2" title="20% Architecture"></div>
+          <div class="bar-segment bar-seg-3" title="20% Final Handover"></div>
+        </div>
+
+        <div class="milestones-grid">
           <!-- Milestone 1 -->
-          <div class="col-md-4">
-            <div class="card-proposal h-100 p-4 border-top border-primary border-3">
-              <div class="d-flex justify-content-between align-items-center mb-2">
-                <span class="badge badge-blue">Milestone 01</span>
-                <span class="fw-bold text-primary">60%</span>
+          <div class="milestone-box">
+            <div>
+              <div class="m-header">
+                <span class="m-badge">Milestone 01</span>
+                <span class="m-pct">60%</span>
               </div>
-              <h3 class="h5 fw-bold text-dark mt-2 mb-1">Advance Payment</h3>
-              <div class="h4 fw-bold text-dark mb-3">₹30,000</div>
-              <p class="text-muted small mb-0">
-                Payable before project planning begins.
-              </p>
+              <h4 class="m-title">Advance Payment</h4>
+              <div class="m-amount">₹30,000</div>
             </div>
+            <p class="m-desc">Payable before project planning begins.</p>
           </div>
 
           <!-- Milestone 2 -->
-          <div class="col-md-4">
-            <div class="card-proposal h-100 p-4 border-top border-primary border-3">
-              <div class="d-flex justify-content-between align-items-center mb-2">
-                <span class="badge badge-navy">Milestone 02</span>
-                <span class="fw-bold text-primary">20%</span>
+          <div class="milestone-box">
+            <div>
+              <div class="m-header">
+                <span class="m-badge">Milestone 02</span>
+                <span class="m-pct">20%</span>
               </div>
-              <h3 class="h5 fw-bold text-dark mt-2 mb-1">Planning &amp; Database Design</h3>
-              <div class="h4 fw-bold text-dark mb-3">₹10,000</div>
-              <p class="text-muted small mb-0">
-                Payable after completion and presentation of the agreed project requirements, system architecture, and database design.
-              </p>
+              <h4 class="m-title">Planning & Database Design</h4>
+              <div class="m-amount">₹10,000</div>
             </div>
+            <p class="m-desc">Payable after completion and presentation of the agreed project requirements, system architecture, and database design.</p>
           </div>
 
           <!-- Milestone 3 -->
-          <div class="col-md-4">
-            <div class="card-proposal h-100 p-4 border-top border-primary border-3">
-              <div class="d-flex justify-content-between align-items-center mb-2">
-                <span class="badge badge-navy">Milestone 03</span>
-                <span class="fw-bold text-primary">20%</span>
+          <div class="milestone-box">
+            <div>
+              <div class="m-header">
+                <span class="m-badge">Milestone 03</span>
+                <span class="m-pct">20%</span>
               </div>
-              <h3 class="h5 fw-bold text-dark mt-2 mb-1">Final Implementation Guidance</h3>
-              <div class="h4 fw-bold text-dark mb-3">₹10,000</div>
-              <p class="text-muted small mb-0">
-                Payable at the agreed final implementation guidance, integration support, testing, documentation, and handover stage.
-              </p>
+              <h4 class="m-title">Final Implementation Guidance</h4>
+              <div class="m-amount">₹10,000</div>
             </div>
+            <p class="m-desc">Payable at the agreed final implementation guidance, integration support, testing, documentation, and handover stage.</p>
           </div>
+        </div>
+
+        <div style="margin-top: 2rem; font-size: 0.85rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">
+          Verified Verification: ₹30,000 + ₹10,000 + ₹10,000 = ₹50,000 Total
         </div>
       </div>
-    </section>
-
-    <!-- ==========================================================================
-         Section 6: Project Timeline
-         ========================================================================== -->
-    <section class="py-5" id="timeline">
-      <div class="container py-lg-4">
-        <div class="text-center mb-5">
-          <span class="badge badge-blue badge-pill-custom mb-2">Process Road</span>
-          <h2 class="section-title mb-2">A Structured Implementation Journey</h2>
-          <p class="section-desc">
-            An orderly sequence designed to steer development from initial planning to completion.
-          </p>
-        </div>
-
-        <!-- 4 Sequential Stages -->
-        <div class="row g-4 mb-4">
-          <!-- Stage 1 -->
-          <div class="col-md-6 col-lg-3">
-            <div class="card-proposal h-100 p-4 text-start">
-              <div class="timeline-step-badge">1</div>
-              <h3 class="h6 fw-bold mb-2">Discovery &amp; Planning</h3>
-              <p class="text-muted small mb-0">
-                Gather requirements, confirm scope, and define the project roadmap.
-              </p>
-            </div>
-          </div>
-
-          <!-- Stage 2 -->
-          <div class="col-md-6 col-lg-3">
-            <div class="card-proposal h-100 p-4 text-start">
-              <div class="timeline-step-badge">2</div>
-              <h3 class="h6 fw-bold mb-2">Architecture &amp; Database</h3>
-              <p class="text-muted small mb-0">
-                Prepare the system architecture, file structure, and database design.
-              </p>
-            </div>
-          </div>
-
-          <!-- Stage 3 -->
-          <div class="col-md-6 col-lg-3">
-            <div class="card-proposal h-100 p-4 text-start">
-              <div class="timeline-step-badge">3</div>
-              <h3 class="h6 fw-bold mb-2">Guided Implementation</h3>
-              <p class="text-muted small mb-0">
-                Support the developer while the agreed modules are coded, integrated, and tested.
-              </p>
-            </div>
-          </div>
-
-          <!-- Stage 4 -->
-          <div class="col-md-6 col-lg-3">
-            <div class="card-proposal h-100 p-4 text-start">
-              <div class="timeline-step-badge">4</div>
-              <h3 class="h6 fw-bold mb-2">Review &amp; Handover</h3>
-              <p class="text-muted small mb-0">
-                Review agreed workflows, provide documentation, and conduct the final walkthrough.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Dynamic/Mutual Agreement Note -->
-        <div class="text-center">
-          <div class="d-inline-flex align-items-center gap-2 p-3 bg-light rounded-3 border text-muted small">
-            <i class="bi bi-calendar-event text-primary"></i>
-            <span>Project timeline to be mutually agreed upon based on the final scope and developer progress.</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         Section 7: Scope & Terms
-         ========================================================================== -->
-    <section class="py-5 section-alt" id="terms">
-      <div class="container py-lg-4">
-        <div class="text-center mb-5">
-          <span class="badge badge-navy badge-pill-custom mb-2">Project Agreement</span>
-          <h2 class="section-title mb-2">Scope of Service &amp; Project Conditions</h2>
-          <p class="section-desc">
-            Clear boundaries and understandings ensure smooth collaboration and clarity throughout the engagement.
-          </p>
-        </div>
-
-        <div class="row justify-content-center">
-          <div class="col-lg-10">
-            <div class="card-proposal p-4 p-md-5">
-              <div class="row g-3">
-                <!-- Condition 1 -->
-                <div class="col-md-6">
-                  <div class="terms-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <div>The service covers project planning, system architecture, AI-assisted development guidance, and guided implementation support.</div>
-                  </div>
-                </div>
-
-                <!-- Condition 2 -->
-                <div class="col-md-6">
-                  <div class="terms-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <div>The client/developer is responsible for writing, implementing, and maintaining the code.</div>
-                  </div>
-                </div>
-
-                <!-- Condition 3 -->
-                <div class="col-md-6">
-                  <div class="terms-item">
-                    <i class="bi bi-shield-exclamation text-primary"></i>
-                    <div>Full independent software development and delivery of a complete production-ready application are not included in this professional fee.</div>
-                  </div>
-                </div>
-
-                <!-- Condition 4 -->
-                <div class="col-md-6">
-                  <div class="terms-item">
-                    <i class="bi bi-x-circle-fill text-muted"></i>
-                    <div>Unlimited revisions and additional features outside the agreed scope are excluded unless separately agreed.</div>
-                  </div>
-                </div>
-
-                <!-- Condition 5 -->
-                <div class="col-md-6">
-                  <div class="terms-item">
-                    <i class="bi bi-globe text-primary"></i>
-                    <div>Domain registration, hosting, paid AI subscriptions, third-party services, and other external costs are not included.</div>
-                  </div>
-                </div>
-
-                <!-- Condition 6 -->
-                <div class="col-md-6">
-                  <div class="terms-item">
-                    <i class="bi bi-bug-fill text-primary"></i>
-                    <div>Testing and debugging support will be provided within the agreed scope.</div>
-                  </div>
-                </div>
-
-                <!-- Condition 7 -->
-                <div class="col-md-6">
-                  <div class="terms-item">
-                    <i class="bi bi-shield-check text-primary"></i>
-                    <div>Security, data protection, deployment, and production-readiness responsibilities must be clearly agreed upon before launch.</div>
-                  </div>
-                </div>
-
-                <!-- Condition 8 -->
-                <div class="col-md-6">
-                  <div class="terms-item">
-                    <i class="bi bi-calendar-check text-primary"></i>
-                    <div>The project schedule and specific deliverables will be agreed upon before work begins.</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         Section 8: Final Call to Action
-         ========================================================================== -->
-    <section class="py-5" id="cta">
-      <div class="container py-lg-4">
-        <div class="card-proposal p-5 text-center bg-white border shadow-sm max-w-750 mx-auto">
-          <span class="badge badge-blue badge-pill-custom mb-3">Next Steps</span>
-          <h2 class="section-title mb-3">Let's Plan Your Management System</h2>
-          <p class="text-muted mb-4 lead fs-6">
-            A clear project structure, organized database design, and guided AI-assisted development workflow can help your developer build the FCS Consultancy Management System in a structured way.
-          </p>
-          <div class="d-inline-flex flex-column align-items-center mb-4">
-            <span class="text-muted small fw-semibold text-uppercase">Professional Fee</span>
-            <span class="h2 fw-bold text-primary mb-0">₹50,000</span>
-          </div>
-          <div>
-            <a href="#contactArea" class="btn btn-corporate-primary btn-lg px-4 py-2 fs-6">
-              <i class="bi bi-chat-right-text-fill"></i>
-              <span>Discuss Project</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
   <!-- ==========================================================================
-       Section 9: Footer & Contact Section
+       SECTION 11: TIMELINE
        ========================================================================== -->
-  <footer class="bg-white border-top py-5" id="contactArea">
+  <section class="section-padding" id="timeline">
     <div class="container">
-      <div class="row g-4 justify-content-between align-items-start mb-4">
-        <!-- Brand & Prepared By -->
-        <div class="col-md-6">
-          <h3 class="h5 fw-bold text-dark mb-1">FCS Consultancy Management System</h3>
-          <p class="text-primary small fw-semibold mb-2">Project Planning &amp; Guided Implementation Support</p>
-          <p class="text-muted small mb-3">Prepared by: <strong>Praveenkumar</strong></p>
+      <div class="section-header">
+        <span class="section-pill">ROADMAP</span>
+        <h2 class="section-title">A Structured Implementation Journey</h2>
+        <p class="section-desc">
+          Four sequential stages ensuring predictable execution from blueprint to functional deployment.
+        </p>
+      </div>
 
-          <!-- Dynamic Contact Block (Controlled via JS configuration) -->
-          <div id="contactDetailsContainer" class="pt-2">
-            <!-- Populated via JavaScript -->
+      <div class="timeline-wrapper">
+        <div class="timeline-step">
+          <div class="step-marker">1</div>
+          <div>
+            <h4 style="font-size: 1.1rem; margin-bottom: 0.35rem;">Stage 1: Discovery & Planning</h4>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">
+              Gather requirements, confirm scope, and define the project roadmap.
+            </p>
           </div>
         </div>
 
-        <!-- Navigation Links in Footer -->
-        <div class="col-md-5 text-md-end">
-          <div class="fw-semibold text-dark small mb-2">Navigation Links</div>
-          <nav aria-label="Footer Navigation">
-            <ul class="list-inline mb-0">
-              <li class="list-inline-item"><a href="#overview" class="text-decoration-none text-muted small">Overview</a></li>
-              <li class="list-inline-item text-muted small">|</li>
-              <li class="list-inline-item"><a href="#responsibilities" class="text-decoration-none text-muted small">Responsibilities</a></li>
-              <li class="list-inline-item text-muted small">|</li>
-              <li class="list-inline-item"><a href="#investment" class="text-decoration-none text-muted small">Investment</a></li>
-              <li class="list-inline-item text-muted small">|</li>
-              <li class="list-inline-item"><a href="#terms" class="text-decoration-none text-muted small">Terms</a></li>
-            </ul>
-          </nav>
+        <div class="timeline-step">
+          <div class="step-marker">2</div>
+          <div>
+            <h4 style="font-size: 1.1rem; margin-bottom: 0.35rem;">Stage 2: Architecture & Database</h4>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">
+              Prepare the system architecture, file structure, and database design.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-step">
+          <div class="step-marker">3</div>
+          <div>
+            <h4 style="font-size: 1.1rem; margin-bottom: 0.35rem;">Stage 3: Guided Implementation</h4>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">
+              Support the developer while the agreed modules are coded, integrated, and tested.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-step">
+          <div class="step-marker">4</div>
+          <div>
+            <h4 style="font-size: 1.1rem; margin-bottom: 0.35rem;">Stage 4: Review & Handover</h4>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">
+              Review agreed workflows, provide documentation, and conduct the final walkthrough.
+            </p>
+          </div>
         </div>
       </div>
 
-      <hr class="border-slate-200 my-4">
+      <p style="text-align: center; margin-top: 2.5rem; font-weight: 500; font-size: 0.95rem; color: var(--text-dark);">
+        "Project timeline to be mutually agreed upon based on the final scope and developer progress."
+      </p>
+    </div>
+  </section>
 
-      <div class="row align-items-center">
-        <div class="col text-center text-muted small">
-          &copy; <span id="currentYear"></span> Project Proposal. All rights reserved.
+  <!-- ==========================================================================
+       SECTION 12: SCOPE & TERMS
+       ========================================================================== -->
+  <section class="section-padding bg-light-alt" id="terms">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-pill">TRANSPARENT CONDITIONS</span>
+        <h2 class="section-title">Scope of Service & Project Conditions</h2>
+        <p class="section-desc">
+          Clearly defined boundaries to ensure accountability and project success.
+        </p>
+      </div>
+
+      <div class="terms-box">
+        <ul class="terms-list">
+          <li>
+            <i class="fa-solid fa-circle-check"></i>
+            <span>The service covers project planning, system architecture, AI-assisted development guidance, and guided implementation support.</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-circle-check"></i>
+            <span>The client/developer is responsible for writing, implementing, and maintaining the code.</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Full independent software development and delivery of a complete production-ready application are not included in this professional fee.</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Unlimited revisions and additional features outside the agreed scope are excluded unless separately agreed.</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Domain registration, hosting, paid AI subscriptions, third-party services, and other external costs are not included.</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Testing and debugging support will be provided within the agreed scope.</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Security, data protection, deployment, and production-readiness responsibilities must be clearly agreed upon before launch.</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-circle-check"></i>
+            <span>The project schedule and specific deliverables will be agreed upon before work begins.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 13: CALL TO ACTION & CONTACT
+       ========================================================================== -->
+  <section class="section-padding" id="contact" style="text-align: center;">
+    <div class="container" style="max-width: 780px;">
+      <span class="section-pill">NEXT STEPS</span>
+      <h2 class="section-title" style="font-size: 2.3rem;">Let's Plan Your Management System</h2>
+      <p class="section-desc" style="margin-bottom: 2rem;">
+        A clear project structure, organized database design, and guided AI-assisted development workflow can help your developer build the FCS Consultancy Management System in a structured way.
+      </p>
+
+      <div style="background: var(--bg-light); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 2rem;">
+        <div style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.35rem;">Professional Advisory Fee</div>
+        <div style="font-size: 2.5rem; font-weight: 800; color: var(--accent-blue); font-family: 'JetBrains Mono', monospace; margin-bottom: 1rem;">
+          ₹50,000
+        </div>
+        <div id="contactDetailsContainer" style="font-size: 0.95rem; color: var(--text-muted);">
+          <!-- JavaScript injects contact or fallback placeholder -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h4>FCS Consultancy Management System</h4>
+          <p>Project Planning & Guided Implementation Support</p>
+          <p style="font-size: 0.82rem; margin-top: 0.25rem; color: #cbd5e1;">Prepared by: Praveenkumar</p>
+        </div>
+
+        <div class="footer-links">
+          <a href="#overview">Overview</a>
+          <a href="#responsibilities">Responsibilities</a>
+          <a href="#calculator">Calculator</a>
+          <a href="#investment">Investment</a>
+          <a href="#terms">Terms</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; <span id="currentYearSpan"></span> Project Proposal. All rights reserved.
+        </div>
+        <div style="color: #64748b; font-size: 0.75rem;">
+          Clean, Modular Architecture & AI Implementation Guidance
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- Bootstrap 5 Bundle with Popper via CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
   <!-- ==========================================================================
-       Vanilla JavaScript Configuration & Execution
+       JAVASCRIPT: CONFIGURATION, CALCULATOR LOGIC, & OFF-CANVAS HAMBURGER
        ========================================================================== -->
   <script>
-    /**
-     * CONFIGURATION VARIABLES
-     * Leave blank ("") by default as requested.
-     * Fill in when sharing or presenting the proposal directly to the client.
-     */
+    /* --------------------------------------------------------------------------
+       1. CONFIGURATION (Safely editable, defaults to blank)
+       -------------------------------------------------------------------------- */
     const proposalConfig = {
-      contactEmail: "", // e.g. "consultant@example.com"
-      contactPhone: ""  // e.g. "+91 98765 43210"
+      contactEmail: "", // Leave blank to display neutral placeholder
+      contactPhone: ""  // Leave blank to display neutral placeholder
     };
 
-    document.addEventListener("DOMContentLoaded", function () {
-      // 1. Automatically update copyright year
-      const yearSpan = document.getElementById("currentYear");
-      if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
+    /* --------------------------------------------------------------------------
+       2. DATA SETS: ADD-ON MODULES & ROLES PRICING
+       -------------------------------------------------------------------------- */
+    const moduleAddonsData = [
+      { id: "mod_1", name: "Advanced Employee Management", min: 15000, max: 30000 },
+      { id: "mod_2", name: "HR and Recruitment Management", min: 20000, max: 40000 },
+      { id: "mod_3", name: "Attendance and Leave Management", min: 10000, max: 25000 },
+      { id: "mod_4", name: "Salary Management", min: 12000, max: 25000 },
+      { id: "mod_5", name: "Payroll Management", min: 20000, max: 40000 },
+      { id: "mod_6", name: "Financial Management", min: 20000, max: 45000 },
+      { id: "mod_7", name: "Invoice and Billing Management", min: 15000, max: 35000 },
+      { id: "mod_8", name: "CRM and Lead Management", min: 20000, max: 45000 },
+      { id: "mod_9", name: "Partner Management", min: 12000, max: 25000 },
+      { id: "mod_10", name: "Project Management", min: 15000, max: 35000 },
+      { id: "mod_11", name: "Team Management", min: 8000, max: 18000 },
+      { id: "mod_12", name: "Frontend Website Pages Management", min: 12000, max: 30000 },
+      { id: "mod_13", name: "Advanced Reports and Analytics", min: 15000, max: 35000 },
+      { id: "mod_14", name: "Bulk Import/Export Framework", min: 10000, max: 25000 },
+      { id: "mod_15", name: "Advanced Audit Logs", min: 8000, max: 20000 },
+      { id: "mod_16", name: "Document Management", min: 10000, max: 25000 },
+      { id: "mod_17", name: "Notification and Reminder System", min: 10000, max: 25000 },
+      { id: "mod_18", name: "Inventory and Asset Management", min: 20000, max: 45000 },
+      { id: "mod_19", name: "Vendor and Purchase Management", min: 15000, max: 35000 },
+      { id: "mod_20", name: "Support Ticket Management", min: 15000, max: 30000 },
+      { id: "mod_21", name: "Multi-Branch Management", min: 25000, max: 60000 },
+      { id: "mod_22", name: "Third-Party API Integration", min: 10000, max: 40000 },
+      { id: "mod_23", name: "Advanced Approval Workflows", min: 12000, max: 30000 },
+      { id: "mod_24", name: "Mobile Application", min: 150000, max: 400000 }
+    ];
+
+    const roleAddonsData = [
+      { id: "role_1", name: "Basic Read-Only Role", min: 3000, max: 6000 },
+      { id: "role_2", name: "Employee Dashboard", min: 5000, max: 12000 },
+      { id: "role_3", name: "Partner Dashboard", min: 6000, max: 15000 },
+      { id: "role_4", name: "HR Manager Dashboard", min: 6000, max: 15000 },
+      { id: "role_5", name: "Finance Manager Dashboard", min: 8000, max: 18000 },
+      { id: "role_6", name: "CRM Manager Dashboard", min: 6000, max: 15000 },
+      { id: "role_7", name: "Operational Admin Dashboard", min: 8000, max: 18000 },
+      { id: "role_8", name: "Advanced Super Admin Dashboard", min: 12000, max: 25000 },
+      { id: "role_9", name: "Custom Role & Permission Config", min: 5000, max: 15000 },
+      { id: "role_10", name: "Advanced Approval Permissions", min: 5000, max: 12000 }
+    ];
+
+    /* --------------------------------------------------------------------------
+       3. DOM READY INITIALIZATION
+       -------------------------------------------------------------------------- */
+    document.addEventListener("DOMContentLoaded", () => {
+      // Dynamic Footer Year
+      document.getElementById("currentYearSpan").textContent = new Date().getFullYear();
+
+      // Contact Info Rendering
+      renderContactArea();
+
+      // Universal Hamburger Drawer Logic
+      setupOffcanvasNav();
+
+      // Calculator Setup
+      initCalculator();
+    });
+
+    /* --------------------------------------------------------------------------
+       4. UNIVERSAL OFFCANVAS HAMBURGER MENU
+       -------------------------------------------------------------------------- */
+    function setupOffcanvasNav() {
+      const openBtn = document.getElementById("openMenuBtn");
+      const closeBtn = document.getElementById("closeMenuBtn");
+      const overlay = document.getElementById("menuOverlay");
+      const drawer = document.getElementById("offcanvasMenu");
+      const navLinks = document.querySelectorAll(".menu-link");
+
+      function openMenu() {
+        overlay.classList.add("is-active");
+        drawer.classList.add("is-active");
+        drawer.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
       }
 
-      // 2. Render dynamic contact section according to configuration rules
-      const contactContainer = document.getElementById("contactDetailsContainer");
-      if (contactContainer) {
-        const hasEmail = proposalConfig.contactEmail && proposalConfig.contactEmail.trim() !== "";
-        const hasPhone = proposalConfig.contactPhone && proposalConfig.contactPhone.trim() !== "";
-
-        if (hasEmail || hasPhone) {
-          let html = '<div class="d-flex flex-column gap-1 text-muted small">';
-          if (hasEmail) {
-            html += `<div><i class="bi bi-envelope me-2 text-primary"></i><a href="mailto:${proposalConfig.contactEmail}" class="text-decoration-none text-dark">${proposalConfig.contactEmail}</a></div>`;
-          }
-          if (hasPhone) {
-            html += `<div><i class="bi bi-telephone me-2 text-primary"></i><a href="tel:${proposalConfig.contactPhone}" class="text-decoration-none text-dark">${proposalConfig.contactPhone}</a></div>`;
-          }
-          html += '</div>';
-          contactContainer.innerHTML = html;
-        } else {
-          // Rule: If blank, hide corresponding links and show the neutral message
-          contactContainer.innerHTML = `
-            <div class="d-inline-flex align-items-center gap-2 px-3 py-2 bg-light rounded text-muted small border">
-              <i class="bi bi-info-circle text-primary"></i>
-              <span>Contact details can be added when the proposal is shared.</span>
-            </div>
-          `;
-        }
+      function closeMenu() {
+        overlay.classList.remove("is-active");
+        drawer.classList.remove("is-active");
+        drawer.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
       }
 
-      // 3. Smooth scroll handling for interactive links and mobile collapse close
-      const navLinks = document.querySelectorAll('.navbar-nav a[href^="#"], a.btn[href^="#"]');
-      const navbarCollapse = document.getElementById('navContent');
-      
+      openBtn.addEventListener("click", openMenu);
+      closeBtn.addEventListener("click", closeMenu);
+      overlay.addEventListener("click", closeMenu);
+
       navLinks.forEach(link => {
-        link.addEventListener('click', function (e) {
-          const targetId = this.getAttribute('href');
-          if (targetId && targetId !== '#') {
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-              // Close mobile dropdown if opened
-              if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-                const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-                if (bsCollapse) {
-                  bsCollapse.hide();
-                }
-              }
-            }
-          }
+        link.addEventListener("click", () => {
+          closeMenu();
         });
       });
-    });
+    }
+
+    /* --------------------------------------------------------------------------
+       5. CONTACT SECTION LOGIC (Clean / No Placeholder Leak)
+       -------------------------------------------------------------------------- */
+    function renderContactArea() {
+      const container = document.getElementById("contactDetailsContainer");
+      const { contactEmail, contactPhone } = proposalConfig;
+
+      if (contactEmail || contactPhone) {
+        let html = '<div style="display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap;">';
+        if (contactEmail) {
+          html += `<a href="mailto:${contactEmail}" class="btn btn-primary"><i class="fa-solid fa-envelope"></i> ${contactEmail}</a>`;
+        }
+        if (contactPhone) {
+          html += `<a href="tel:${contactPhone}" class="btn btn-secondary"><i class="fa-solid fa-phone"></i> ${contactPhone}</a>`;
+        }
+        html += '</div>';
+        container.innerHTML = html;
+      } else {
+        container.innerHTML = '<p style="color:var(--text-muted); font-size:0.92rem;"><i class="fa-solid fa-circle-info" style="margin-right:0.35rem;"></i> Contact details can be added when the proposal is shared.</p>';
+      }
+    }
+
+    /* --------------------------------------------------------------------------
+       6. INTERACTIVE CALCULATOR ENGINE
+       -------------------------------------------------------------------------- */
+    function initCalculator() {
+      const modulesWrapper = document.getElementById("modulesCheckboxList");
+      const rolesWrapper = document.getElementById("rolesCheckboxList");
+
+      // Render Checkboxes for Modules
+      modulesWrapper.innerHTML = moduleAddonsData.map(item => `
+        <label class="calc-check-item">
+          <div class="calc-check-left">
+            <input type="checkbox" data-min="${item.min}" data-max="${item.max}" data-name="${item.name}" class="calc-cb">
+            <span class="calc-item-name">${item.name}</span>
+          </div>
+          <span class="calc-item-cost">₹${formatINR(item.min)} – ₹${formatINR(item.max)}</span>
+        </label>
+      `).join("");
+
+      // Render Checkboxes for Roles
+      rolesWrapper.innerHTML = roleAddonsData.map(item => `
+        <label class="calc-check-item">
+          <div class="calc-check-left">
+            <input type="checkbox" data-min="${item.min}" data-max="${item.max}" data-name="${item.name}" class="calc-cb">
+            <span class="calc-item-name">${item.name}</span>
+          </div>
+          <span class="calc-item-cost">₹${formatINR(item.min)} – ₹${formatINR(item.max)}</span>
+        </label>
+      `).join("");
+
+      // Attach Change Listeners
+      const checkboxes = document.querySelectorAll(".calc-cb");
+      checkboxes.forEach(cb => {
+        cb.addEventListener("change", recalculatePrices);
+      });
+
+      // Reset Button
+      document.getElementById("resetCalcBtn").addEventListener("click", () => {
+        checkboxes.forEach(cb => cb.checked = false);
+        recalculatePrices();
+      });
+
+      // Initial Call
+      recalculatePrices();
+    }
+
+    function recalculatePrices() {
+      const selected = document.querySelectorAll(".calc-cb:checked");
+      let totalMin = 0;
+      let totalMax = 0;
+      let count = selected.length;
+
+      selected.forEach(cb => {
+        totalMin += parseInt(cb.dataset.min, 10);
+        totalMax += parseInt(cb.dataset.max, 10);
+      });
+
+      // Update Dashboard Metric Displays
+      const subtotalDisplay = document.getElementById("addonSubtotalDisplay");
+      const countDisplay = document.getElementById("addonCountDisplay");
+      const sumMinPrice = document.getElementById("sumMinPrice");
+      const sumMaxPrice = document.getElementById("sumMaxPrice");
+      const sumRangeDisplay = document.getElementById("sumRangeDisplay");
+
+      countDisplay.textContent = `${count} item${count === 1 ? '' : 's'} selected`;
+
+      if (count === 0) {
+        subtotalDisplay.textContent = "₹0";
+        sumMinPrice.textContent = "₹0";
+        sumMaxPrice.textContent = "₹0";
+        sumRangeDisplay.textContent = "₹0";
+      } else {
+        subtotalDisplay.textContent = `₹${formatINR(totalMin)} – ₹${formatINR(totalMax)}`;
+        sumMinPrice.textContent = `₹${formatINR(totalMin)}`;
+        sumMaxPrice.textContent = `₹${formatINR(totalMax)}`;
+        sumRangeDisplay.textContent = `₹${formatINR(totalMin)} – ₹${formatINR(totalMax)}`;
+      }
+    }
+
+    // Helper: Indian Rupee Formatter
+    function formatINR(number) {
+      return number.toLocaleString('en-IN');
+    }
   </script>
+
 </body>
 </html>
