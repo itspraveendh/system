@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FCS Consultancy Management System | Project Proposal</title>
+  <meta name="description" content="Professional consulting proposal for FCS Consultancy Management System: Project Planning & Guided Implementation Support by Praveenkumar.">
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 CSS via CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons via CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    /* ==========================================================================
+       CSS Variables & Base Styling
+       ========================================================================== */
+    :root {
+      --primary-navy: #0f172a;       /* Deep slate/navy */
+      --secondary-navy: #1e293b;     /* Card headers & dark elements */
+      --accent-blue: #2563eb;        /* Professional blue accent */
+      --accent-blue-hover: #1d4ed8;
+      --accent-light: #eff6ff;       /* Soft blue tint */
+      --bg-light: #f8fafc;          /* Subtle light-gray background */
+      --text-dark: #0f172a;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --card-radius: 14px;
+      --transition-smooth: all 0.25s ease-in-out;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--text-dark);
+      background-color: #ffffff;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ==========================================================================
+       Section Styling & Helpers
+       ========================================================================== */
+    .section-alt {
+      background-color: var(--bg-light);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .badge-pill-custom {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge-navy {
+      background-color: #f1f5f9;
+      color: var(--primary-navy);
+      border: 1px solid #cbd5e1;
+    }
+
+    .badge-blue {
+      background-color: var(--accent-light);
+      color: var(--accent-blue);
+      border: 1px solid #bfdbfe;
+    }
+
+    .section-title {
+      font-weight: 700;
+      font-size: 2.1rem;
+      letter-spacing: -0.02em;
+      color: var(--primary-navy);
+    }
+
+    @media (max-width: 768px) {
+      .section-title {
+        font-size: 1.75rem;
+      }
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ==========================================================================
+       Navigation Bar
+       ========================================================================== */
+    .navbar-custom {
+      background-color: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      transition: var(--transition-smooth);
+    }
+
+    .navbar-brand-title {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--primary-navy);
+      letter-spacing: -0.01em;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      font-size: 0.925rem;
+      color: var(--text-muted) !important;
+      padding: 0.5rem 0.85rem !important;
+      transition: var(--transition-smooth);
+    }
+
+    .nav-link:hover, .nav-link:focus {
+      color: var(--accent-blue) !important;
+    }
+
+    .btn-corporate-primary {
+      background-color: var(--accent-blue);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: 8px;
+      padding: 8px 18px;
+      border: 1px solid var(--accent-blue);
+      transition: var(--transition-smooth);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-corporate-primary:hover {
+      background-color: var(--accent-blue-hover);
+      border-color: var(--accent-blue-hover);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    }
+
+    .btn-corporate-outline {
+      background-color: #ffffff;
+      color: var(--primary-navy);
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: 8px;
+      padding: 8px 18px;
+      border: 1px solid var(--border-color);
+      transition: var(--transition-smooth);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-corporate-outline:hover {
+      background-color: #f8fafc;
+      border-color: #cbd5e1;
+      color: var(--accent-blue);
+    }
+
+    /* ==========================================================================
+       Cards & Elevation
+       ========================================================================== */
+    .card-proposal {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--card-radius);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      transition: var(--transition-smooth);
+    }
+
+    .card-proposal:hover {
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
+      border-color: #cbd5e1;
+    }
+
+    /* Hero Pricing Cards */
+    .pricing-card-comparison {
+      border: 1px solid var(--border-color);
+      border-radius: var(--card-radius);
+      padding: 2rem;
+      height: 100%;
+      position: relative;
+      background: #ffffff;
+      transition: var(--transition-smooth);
+    }
+
+    .pricing-card-highlight {
+      border: 2px solid var(--accent-blue);
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.08);
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+    }
+
+    .pricing-badge-accent {
+      position: absolute;
+      top: -12px;
+      right: 24px;
+      background: var(--accent-blue);
+      color: #ffffff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 9999px;
+    }
+
+    .price-value-primary {
+      font-size: 2.3rem;
+      font-weight: 800;
+      color: var(--primary-navy);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    .price-value-accent {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--accent-blue);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    /* Responsibility Number Pill */
+    .num-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background-color: #f1f5f9;
+      color: var(--accent-blue);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+      flex-shrink: 0;
+      border: 1px solid #e2e8f0;
+    }
+
+    /* Timeline Stepper */
+    .timeline-step-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: var(--accent-blue);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Milestone Progress Bar */
+    .milestone-progress {
+      height: 12px;
+      border-radius: 9999px;
+      background-color: #e2e8f0;
+      overflow: hidden;
+      display: flex;
+    }
+
+    .progress-segment-1 {
+      width: 60%;
+      background-color: var(--accent-blue);
+    }
+
+    .progress-segment-2 {
+      width: 20%;
+      background-color: #3b82f6;
+    }
+
+    .progress-segment-3 {
+      width: 20%;
+      background-color: #60a5fa;
+    }
+
+    /* Terms List Styling */
+    .terms-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+      color: #334155;
+    }
+
+    .terms-item i {
+      color: var(--accent-blue);
+      font-size: 1.1rem;
+      line-height: 1.4;
+      flex-shrink: 0;
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ==========================================================================
+       Print / PDF Specific Styles
+       ========================================================================== */
+    @media print {
+      body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        font-size: 11pt;
+      }
+
+      .no-print,
+      .navbar,
+      .btn,
+      #printBtn {
+        display: none !important;
+      }
+
+      .section-alt {
+        background-color: #ffffff !important;
+        border: none !important;
+      }
+
+      .card-proposal,
+      .pricing-card-comparison,
+      .pricing-card-highlight {
+        box-shadow: none !important;
+        border: 1px solid #cccccc !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .price-value-primary,
+      .price-value-accent {
+        color: #000000 !important;
+      }
+
+      a {
+        text-decoration: none !important;
+        color: #000000 !important;
+      }
+
+      .container {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 0 !important;
+      }
+
+      .py-5 {
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       Section 1: Navigation
+       ========================================================================== -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top" aria-label="Main Navigation">
+      <div class="container py-1">
+        <!-- Brand & Badge -->
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+          <span class="navbar-brand-title">FCS Consultancy</span>
+          <span class="badge badge-navy badge-pill-custom d-none d-sm-inline-flex">
+            Management System Proposal
+          </span>
+        </a>
+
+        <!-- Mobile Toggler -->
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="bi bi-list fs-2 text-dark"></i>
+        </button>
+
+        <!-- Nav Links & CTAs -->
+        <div class="collapse navbar-collapse" id="navContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+            <li class="nav-item">
+              <a class="nav-link" href="#overview">Overview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#responsibilities">Responsibilities</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#investment">Investment</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#timeline">Timeline</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#terms">Terms</a>
+            </li>
+          </ul>
+
+          <div class="d-flex align-items-center gap-2 ms-lg-3 mt-3 mt-lg-0">
+            <!-- Print / PDF Button -->
+            <button id="printBtn" class="btn btn-corporate-outline" type="button" aria-label="Print or Save as PDF" onclick="window.print()">
+              <i class="bi bi-printer"></i>
+              <span>Print / PDF</span>
+            </button>
+            <!-- Primary Action -->
+            <a href="#cta" class="btn btn-corporate-primary">
+              <i class="bi bi-chat-dots-fill"></i>
+              <span>Discuss Project</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ==========================================================================
+         Section 2: Hero Section
+         ========================================================================== -->
+    <section class="py-5" id="hero">
+      <div class="container py-lg-4">
+        <!-- Label & Titles -->
+        <div class="text-center max-w-750 mx-auto mb-5">
+          <span class="badge badge-blue badge-pill-custom mb-3">
+            <i class="bi bi-file-earmark-text"></i> PROJECT PROPOSAL
+          </span>
+          <h1 class="display-5 fw-bold text-dark tracking-tight mb-2">
+            FCS Consultancy Management System
+          </h1>
+          <p class="h4 text-primary fw-semibold mb-3">
+            Project Planning &amp; Guided Implementation Support
+          </p>
+          <p class="section-desc">
+            A structured approach to planning, designing, and guiding the implementation of a custom PHP-based consultancy management system using AI-assisted development tools.
+          </p>
+        </div>
+
+        <!-- Price Comparison Cards -->
+        <div class="row g-4 justify-content-center mb-4">
+          <!-- Card 1: Estimated Full Development Value -->
+          <div class="col-md-6 col-lg-5">
+            <div class="pricing-card-comparison">
+              <div class="text-muted small fw-semibold text-uppercase mb-2">Estimated Full Development Value</div>
+              <div class="price-value-primary mb-3">₹2,00,000 – ₹3,00,000</div>
+              <p class="text-muted small mb-0">
+                Indicative budget for full development by a software company.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 2: My Professional Fee -->
+          <div class="col-md-6 col-lg-5">
+            <div class="pricing-card-comparison pricing-card-highlight">
+              <span class="pricing-badge-accent">Selected Model</span>
+              <div class="text-primary small fw-semibold text-uppercase mb-2">My Professional Fee</div>
+              <div class="price-value-accent mb-3">₹50,000</div>
+              <p class="text-dark small fw-medium mb-0">
+                Project planning, system architecture, and guided implementation support.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="text-center mb-4">
+          <p class="text-muted small mb-0">
+            <i class="bi bi-info-circle me-1"></i> Development value is an estimate for budgeting purposes, not a confirmed third-party quotation.
+          </p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="d-flex flex-wrap justify-content-center gap-3 pt-2">
+          <a href="#responsibilities" class="btn btn-corporate-primary px-4 py-2">
+            <i class="bi bi-list-check"></i>
+            <span>View Project Scope</span>
+          </a>
+          <a href="#investment" class="btn btn-corporate-outline px-4 py-2">
+            <i class="bi bi-cash-stack"></i>
+            <span>View Payment Plan</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 3: Project Overview
+         ========================================================================== -->
+    <section class="py-5 section-alt" id="overview">
+      <div class="container py-lg-4">
+        <div class="text-center mb-5">
+          <span class="badge badge-navy badge-pill-custom mb-2">System Vision</span>
+          <h2 class="section-title mb-3">A Clear Plan for Your Business Management System</h2>
+          <p class="section-desc">
+            The objective is to plan and guide the implementation of a centralized management system that helps FCS Consultancy organize its business operations, employee records, financial activities, and administrative workflows.
+          </p>
+          <div class="alert alert-light border border-slate-200 d-inline-block small text-muted py-2 px-3 mt-2 rounded-3">
+            <i class="bi bi-info-circle-fill text-primary me-1"></i> <strong>Note:</strong> The modules below represent planned system capabilities to be guided during development.
+          </div>
+        </div>
+
+        <!-- 4 Feature Cards -->
+        <div class="row g-4">
+          <!-- Feature 1 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card-proposal h-100 p-4">
+              <div class="num-pill mb-3 text-primary">
+                <i class="bi bi-people-fill"></i>
+              </div>
+              <h3 class="h5 fw-bold mb-2">1. Employee Management</h3>
+              <p class="text-muted small mb-0">
+                Organize employee information, attendance, and leave records.
+              </p>
+            </div>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card-proposal h-100 p-4">
+              <div class="num-pill mb-3 text-primary">
+                <i class="bi bi-wallet2"></i>
+              </div>
+              <h3 class="h5 fw-bold mb-2">2. Financial Management</h3>
+              <p class="text-muted small mb-0">
+                Plan salary, payroll, invoice, income, expenses, and revenue tracking.
+              </p>
+            </div>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card-proposal h-100 p-4">
+              <div class="num-pill mb-3 text-primary">
+                <i class="bi bi-shield-lock-fill"></i>
+              </div>
+              <h3 class="h5 fw-bold mb-2">3. Centralized Administration</h3>
+              <p class="text-muted small mb-0">
+                Structure the admin panel, user roles, permissions, and management workflows.
+              </p>
+            </div>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card-proposal h-100 p-4">
+              <div class="num-pill mb-3 text-primary">
+                <i class="bi bi-graph-up-arrow"></i>
+              </div>
+              <h3 class="h5 fw-bold mb-2">4. Reporting &amp; Insights</h3>
+              <p class="text-muted small mb-0">
+                Plan revenue summaries, expense reports, outstanding balances, and business statistics.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 4: My 10 Responsibilities
+         ========================================================================== -->
+    <section class="py-5" id="responsibilities">
+      <div class="container py-lg-4">
+        <div class="text-center mb-5">
+          <span class="badge badge-blue badge-pill-custom mb-2">Scope of Consulting</span>
+          <h2 class="section-title mb-2">What My Professional Service Includes</h2>
+          <p class="section-desc fw-medium text-dark">
+            End-to-end project planning and guided implementation support, with coding handled by the client/developer.
+          </p>
+        </div>
+
+        <!-- 10 Numbered Cards in 2-Column Grid -->
+        <div class="row g-4">
+          <!-- 01 -->
+          <div class="col-md-6">
+            <div class="card-proposal p-4 h-100 d-flex flex-row align-items-start gap-3">
+              <div class="num-pill">01</div>
+              <div>
+                <h3 class="h6 fw-bold mb-1">Requirement Analysis &amp; Planning</h3>
+                <p class="text-muted small mb-0">
+                  Understand business requirements, identify modules, define project scope, and prepare the development roadmap.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 02 -->
+          <div class="col-md-6">
+            <div class="card-proposal p-4 h-100 d-flex flex-row align-items-start gap-3">
+              <div class="num-pill">02</div>
+              <div>
+                <h3 class="h6 fw-bold mb-1">System Architecture</h3>
+                <p class="text-muted small mb-0">
+                  Plan the PHP project structure, folder organization, reusable components, file responsibilities, and development workflow.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 03 -->
+          <div class="col-md-6">
+            <div class="card-proposal p-4 h-100 d-flex flex-row align-items-start gap-3">
+              <div class="num-pill">03</div>
+              <div>
+                <h3 class="h6 fw-bold mb-1">UI/UX &amp; Dashboard Planning</h3>
+                <p class="text-muted small mb-0">
+                  Define the dashboard layout, navigation, tables, forms, charts, revenue summaries, and business statistics.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 04 -->
+          <div class="col-md-6">
+            <div class="card-proposal p-4 h-100 d-flex flex-row align-items-start gap-3">
+              <div class="num-pill">04</div>
+              <div>
+                <h3 class="h6 fw-bold mb-1">AI-Assisted Development Guidance</h3>
+                <p class="text-muted small mb-0">
+                  Prepare effective ChatGPT prompts and guide the use of Google Gemini for code generation, refinement, and troubleshooting.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 05 -->
+          <div class="col-md-6">
+            <div class="card-proposal p-4 h-100 d-flex flex-row align-items-start gap-3">
+              <div class="num-pill">05</div>
+              <div>
+                <h3 class="h6 fw-bold mb-1">Database Design &amp; Setup</h3>
+                <p class="text-muted small mb-0">
+                  Plan MySQL tables, fields, relationships, and database structure. Guide XAMPP and local development environment setup.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 06 -->
+          <div class="col-md-6">
+            <div class="card-proposal p-4 h-100 d-flex flex-row align-items-start gap-3">
+              <div class="num-pill">06</div>
+              <div>
+                <h3 class="h6 fw-bold mb-1">Management Module Planning</h3>
+                <p class="text-muted small mb-0">
+                  Guide implementation planning for employee management, salary, payroll, invoices, clients, projects, attendance, expenses, and revenue.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 07 -->
+          <div class="col-md-6">
+            <div class="card-proposal p-4 h-100 d-flex flex-row align-items-start gap-3">
+              <div class="num-pill">07</div>
+              <div>
+                <h3 class="h6 fw-bold mb-1">Admin Panel &amp; Access Control</h3>
+                <p class="text-muted small mb-0">
+                  Plan login, authentication, user roles, permissions, and CRUD operations for managing records.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 08 -->
+          <div class="col-md-6">
+            <div class="card-proposal p-4 h-100 d-flex flex-row align-items-start gap-3">
+              <div class="num-pill">08</div>
+              <div>
+                <h3 class="h6 fw-bold mb-1">Integration, Testing &amp; Debugging</h3>
+                <p class="text-muted small mb-0">
+                  Assist with connecting modules, identifying errors, troubleshooting PHP/MySQL issues, and conducting functional tests.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 09 -->
+          <div class="col-md-6">
+            <div class="card-proposal p-4 h-100 d-flex flex-row align-items-start gap-3">
+              <div class="num-pill">09</div>
+              <div>
+                <h3 class="h6 fw-bold mb-1">Hosting &amp; Deployment Guidance</h3>
+                <p class="text-muted small mb-0">
+                  Explain hosting requirements, domain configuration, live database migration, environment settings, and deployment checks.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 10 -->
+          <div class="col-md-6">
+            <div class="card-proposal p-4 h-100 d-flex flex-row align-items-start gap-3">
+              <div class="num-pill">10</div>
+              <div>
+                <h3 class="h6 fw-bold mb-1">Documentation &amp; Final Handover</h3>
+                <p class="text-muted small mb-0">
+                  Prepare implementation documentation, explain workflows, and guide the final project walkthrough.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 5: Investment & Payment Plan
+         ========================================================================== -->
+    <section class="py-5 section-alt" id="investment">
+      <div class="container py-lg-4">
+        <!-- Section Header -->
+        <div class="text-center mb-5">
+          <span class="badge badge-navy badge-pill-custom mb-2">Transparent Commercials</span>
+          <h2 class="section-title mb-2">Professional Fee &amp; Payment Schedule</h2>
+          <div class="my-3">
+            <span class="display-6 fw-bold text-primary">₹50,000</span>
+          </div>
+          <p class="section-desc">
+            Fixed professional fee for the agreed planning and guided implementation scope.
+          </p>
+        </div>
+
+        <!-- Visual Progress Bar for 60% / 20% / 20% -->
+        <div class="max-w-750 mx-auto mb-4">
+          <div class="d-flex justify-content-between small fw-semibold text-muted mb-2">
+            <span>Milestone 01: 60% (Advance)</span>
+            <span>Milestone 02: 20%</span>
+            <span>Milestone 03: 20%</span>
+          </div>
+          <div class="milestone-progress" role="progressbar" aria-label="Payment distribution breakdown" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-segment-1" title="Milestone 01 (60%)"></div>
+            <div class="progress-segment-2" title="Milestone 02 (20%)"></div>
+            <div class="progress-segment-3" title="Milestone 03 (20%)"></div>
+          </div>
+          <div class="text-end mt-1">
+            <span class="badge bg-light text-muted border">Total: ₹30,000 + ₹10,000 + ₹10,000 = ₹50,000</span>
+          </div>
+        </div>
+
+        <!-- Milestone Cards -->
+        <div class="row g-4 mt-2">
+          <!-- Milestone 1 -->
+          <div class="col-md-4">
+            <div class="card-proposal h-100 p-4 border-top border-primary border-3">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="badge badge-blue">Milestone 01</span>
+                <span class="fw-bold text-primary">60%</span>
+              </div>
+              <h3 class="h5 fw-bold text-dark mt-2 mb-1">Advance Payment</h3>
+              <div class="h4 fw-bold text-dark mb-3">₹30,000</div>
+              <p class="text-muted small mb-0">
+                Payable before project planning begins.
+              </p>
+            </div>
+          </div>
+
+          <!-- Milestone 2 -->
+          <div class="col-md-4">
+            <div class="card-proposal h-100 p-4 border-top border-primary border-3">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="badge badge-navy">Milestone 02</span>
+                <span class="fw-bold text-primary">20%</span>
+              </div>
+              <h3 class="h5 fw-bold text-dark mt-2 mb-1">Planning &amp; Database Design</h3>
+              <div class="h4 fw-bold text-dark mb-3">₹10,000</div>
+              <p class="text-muted small mb-0">
+                Payable after completion and presentation of the agreed project requirements, system architecture, and database design.
+              </p>
+            </div>
+          </div>
+
+          <!-- Milestone 3 -->
+          <div class="col-md-4">
+            <div class="card-proposal h-100 p-4 border-top border-primary border-3">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="badge badge-navy">Milestone 03</span>
+                <span class="fw-bold text-primary">20%</span>
+              </div>
+              <h3 class="h5 fw-bold text-dark mt-2 mb-1">Final Implementation Guidance</h3>
+              <div class="h4 fw-bold text-dark mb-3">₹10,000</div>
+              <p class="text-muted small mb-0">
+                Payable at the agreed final implementation guidance, integration support, testing, documentation, and handover stage.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 6: Project Timeline
+         ========================================================================== -->
+    <section class="py-5" id="timeline">
+      <div class="container py-lg-4">
+        <div class="text-center mb-5">
+          <span class="badge badge-blue badge-pill-custom mb-2">Process Road</span>
+          <h2 class="section-title mb-2">A Structured Implementation Journey</h2>
+          <p class="section-desc">
+            An orderly sequence designed to steer development from initial planning to completion.
+          </p>
+        </div>
+
+        <!-- 4 Sequential Stages -->
+        <div class="row g-4 mb-4">
+          <!-- Stage 1 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card-proposal h-100 p-4 text-start">
+              <div class="timeline-step-badge">1</div>
+              <h3 class="h6 fw-bold mb-2">Discovery &amp; Planning</h3>
+              <p class="text-muted small mb-0">
+                Gather requirements, confirm scope, and define the project roadmap.
+              </p>
+            </div>
+          </div>
+
+          <!-- Stage 2 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card-proposal h-100 p-4 text-start">
+              <div class="timeline-step-badge">2</div>
+              <h3 class="h6 fw-bold mb-2">Architecture &amp; Database</h3>
+              <p class="text-muted small mb-0">
+                Prepare the system architecture, file structure, and database design.
+              </p>
+            </div>
+          </div>
+
+          <!-- Stage 3 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card-proposal h-100 p-4 text-start">
+              <div class="timeline-step-badge">3</div>
+              <h3 class="h6 fw-bold mb-2">Guided Implementation</h3>
+              <p class="text-muted small mb-0">
+                Support the developer while the agreed modules are coded, integrated, and tested.
+              </p>
+            </div>
+          </div>
+
+          <!-- Stage 4 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card-proposal h-100 p-4 text-start">
+              <div class="timeline-step-badge">4</div>
+              <h3 class="h6 fw-bold mb-2">Review &amp; Handover</h3>
+              <p class="text-muted small mb-0">
+                Review agreed workflows, provide documentation, and conduct the final walkthrough.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic/Mutual Agreement Note -->
+        <div class="text-center">
+          <div class="d-inline-flex align-items-center gap-2 p-3 bg-light rounded-3 border text-muted small">
+            <i class="bi bi-calendar-event text-primary"></i>
+            <span>Project timeline to be mutually agreed upon based on the final scope and developer progress.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 7: Scope & Terms
+         ========================================================================== -->
+    <section class="py-5 section-alt" id="terms">
+      <div class="container py-lg-4">
+        <div class="text-center mb-5">
+          <span class="badge badge-navy badge-pill-custom mb-2">Project Agreement</span>
+          <h2 class="section-title mb-2">Scope of Service &amp; Project Conditions</h2>
+          <p class="section-desc">
+            Clear boundaries and understandings ensure smooth collaboration and clarity throughout the engagement.
+          </p>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="card-proposal p-4 p-md-5">
+              <div class="row g-3">
+                <!-- Condition 1 -->
+                <div class="col-md-6">
+                  <div class="terms-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <div>The service covers project planning, system architecture, AI-assisted development guidance, and guided implementation support.</div>
+                  </div>
+                </div>
+
+                <!-- Condition 2 -->
+                <div class="col-md-6">
+                  <div class="terms-item">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <div>The client/developer is responsible for writing, implementing, and maintaining the code.</div>
+                  </div>
+                </div>
+
+                <!-- Condition 3 -->
+                <div class="col-md-6">
+                  <div class="terms-item">
+                    <i class="bi bi-shield-exclamation text-primary"></i>
+                    <div>Full independent software development and delivery of a complete production-ready application are not included in this professional fee.</div>
+                  </div>
+                </div>
+
+                <!-- Condition 4 -->
+                <div class="col-md-6">
+                  <div class="terms-item">
+                    <i class="bi bi-x-circle-fill text-muted"></i>
+                    <div>Unlimited revisions and additional features outside the agreed scope are excluded unless separately agreed.</div>
+                  </div>
+                </div>
+
+                <!-- Condition 5 -->
+                <div class="col-md-6">
+                  <div class="terms-item">
+                    <i class="bi bi-globe text-primary"></i>
+                    <div>Domain registration, hosting, paid AI subscriptions, third-party services, and other external costs are not included.</div>
+                  </div>
+                </div>
+
+                <!-- Condition 6 -->
+                <div class="col-md-6">
+                  <div class="terms-item">
+                    <i class="bi bi-bug-fill text-primary"></i>
+                    <div>Testing and debugging support will be provided within the agreed scope.</div>
+                  </div>
+                </div>
+
+                <!-- Condition 7 -->
+                <div class="col-md-6">
+                  <div class="terms-item">
+                    <i class="bi bi-shield-check text-primary"></i>
+                    <div>Security, data protection, deployment, and production-readiness responsibilities must be clearly agreed upon before launch.</div>
+                  </div>
+                </div>
+
+                <!-- Condition 8 -->
+                <div class="col-md-6">
+                  <div class="terms-item">
+                    <i class="bi bi-calendar-check text-primary"></i>
+                    <div>The project schedule and specific deliverables will be agreed upon before work begins.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 8: Final Call to Action
+         ========================================================================== -->
+    <section class="py-5" id="cta">
+      <div class="container py-lg-4">
+        <div class="card-proposal p-5 text-center bg-white border shadow-sm max-w-750 mx-auto">
+          <span class="badge badge-blue badge-pill-custom mb-3">Next Steps</span>
+          <h2 class="section-title mb-3">Let's Plan Your Management System</h2>
+          <p class="text-muted mb-4 lead fs-6">
+            A clear project structure, organized database design, and guided AI-assisted development workflow can help your developer build the FCS Consultancy Management System in a structured way.
+          </p>
+          <div class="d-inline-flex flex-column align-items-center mb-4">
+            <span class="text-muted small fw-semibold text-uppercase">Professional Fee</span>
+            <span class="h2 fw-bold text-primary mb-0">₹50,000</span>
+          </div>
+          <div>
+            <a href="#contactArea" class="btn btn-corporate-primary btn-lg px-4 py-2 fs-6">
+              <i class="bi bi-chat-right-text-fill"></i>
+              <span>Discuss Project</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       Section 9: Footer & Contact Section
+       ========================================================================== -->
+  <footer class="bg-white border-top py-5" id="contactArea">
+    <div class="container">
+      <div class="row g-4 justify-content-between align-items-start mb-4">
+        <!-- Brand & Prepared By -->
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold text-dark mb-1">FCS Consultancy Management System</h3>
+          <p class="text-primary small fw-semibold mb-2">Project Planning &amp; Guided Implementation Support</p>
+          <p class="text-muted small mb-3">Prepared by: <strong>Praveenkumar</strong></p>
+
+          <!-- Dynamic Contact Block (Controlled via JS configuration) -->
+          <div id="contactDetailsContainer" class="pt-2">
+            <!-- Populated via JavaScript -->
+          </div>
+        </div>
+
+        <!-- Navigation Links in Footer -->
+        <div class="col-md-5 text-md-end">
+          <div class="fw-semibold text-dark small mb-2">Navigation Links</div>
+          <nav aria-label="Footer Navigation">
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item"><a href="#overview" class="text-decoration-none text-muted small">Overview</a></li>
+              <li class="list-inline-item text-muted small">|</li>
+              <li class="list-inline-item"><a href="#responsibilities" class="text-decoration-none text-muted small">Responsibilities</a></li>
+              <li class="list-inline-item text-muted small">|</li>
+              <li class="list-inline-item"><a href="#investment" class="text-decoration-none text-muted small">Investment</a></li>
+              <li class="list-inline-item text-muted small">|</li>
+              <li class="list-inline-item"><a href="#terms" class="text-decoration-none text-muted small">Terms</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <hr class="border-slate-200 my-4">
+
+      <div class="row align-items-center">
+        <div class="col text-center text-muted small">
+          &copy; <span id="currentYear"></span> Project Proposal. All rights reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 Bundle with Popper via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- ==========================================================================
+       Vanilla JavaScript Configuration & Execution
+       ========================================================================== -->
+  <script>
+    /**
+     * CONFIGURATION VARIABLES
+     * Leave blank ("") by default as requested.
+     * Fill in when sharing or presenting the proposal directly to the client.
+     */
+    const proposalConfig = {
+      contactEmail: "", // e.g. "consultant@example.com"
+      contactPhone: ""  // e.g. "+91 98765 43210"
+    };
+
+    document.addEventListener("DOMContentLoaded", function () {
+      // 1. Automatically update copyright year
+      const yearSpan = document.getElementById("currentYear");
+      if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+      }
+
+      // 2. Render dynamic contact section according to configuration rules
+      const contactContainer = document.getElementById("contactDetailsContainer");
+      if (contactContainer) {
+        const hasEmail = proposalConfig.contactEmail && proposalConfig.contactEmail.trim() !== "";
+        const hasPhone = proposalConfig.contactPhone && proposalConfig.contactPhone.trim() !== "";
+
+        if (hasEmail || hasPhone) {
+          let html = '<div class="d-flex flex-column gap-1 text-muted small">';
+          if (hasEmail) {
+            html += `<div><i class="bi bi-envelope me-2 text-primary"></i><a href="mailto:${proposalConfig.contactEmail}" class="text-decoration-none text-dark">${proposalConfig.contactEmail}</a></div>`;
+          }
+          if (hasPhone) {
+            html += `<div><i class="bi bi-telephone me-2 text-primary"></i><a href="tel:${proposalConfig.contactPhone}" class="text-decoration-none text-dark">${proposalConfig.contactPhone}</a></div>`;
+          }
+          html += '</div>';
+          contactContainer.innerHTML = html;
+        } else {
+          // Rule: If blank, hide corresponding links and show the neutral message
+          contactContainer.innerHTML = `
+            <div class="d-inline-flex align-items-center gap-2 px-3 py-2 bg-light rounded text-muted small border">
+              <i class="bi bi-info-circle text-primary"></i>
+              <span>Contact details can be added when the proposal is shared.</span>
+            </div>
+          `;
+        }
+      }
+
+      // 3. Smooth scroll handling for interactive links and mobile collapse close
+      const navLinks = document.querySelectorAll('.navbar-nav a[href^="#"], a.btn[href^="#"]');
+      const navbarCollapse = document.getElementById('navContent');
+      
+      navLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+          const targetId = this.getAttribute('href');
+          if (targetId && targetId !== '#') {
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              // Close mobile dropdown if opened
+              if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                if (bsCollapse) {
+                  bsCollapse.hide();
+                }
+              }
+            }
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
