@@ -149,13 +149,73 @@
       background-color: #475569;
     }
 
+    /* Client & Milestone Price Editor Panels */
+    .editor-section-card {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: var(--radius-md);
+      padding: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .editor-section-title {
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: #38bdf8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .editor-inputs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.65rem;
+    }
+
+    .editor-field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .editor-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .editor-input {
+      background: #1e293b;
+      border: 1px solid #475569;
+      border-radius: var(--radius-sm);
+      color: #f8fafc;
+      font-size: 0.82rem;
+      padding: 0.4rem 0.6rem;
+      font-family: inherit;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .editor-input:focus {
+      border-color: var(--accent-blue);
+      background: #0f172a;
+    }
+
     /* Editable Inline Highlighting */
     .editable-field {
-      border-bottom: 1px dashed rgba(37, 99, 235, 0.4);
-      padding: 0.1rem 0.25rem;
+      border-bottom: 1px dashed rgba(37, 99, 235, 0.45);
+      padding: 0.05rem 0.2rem;
       outline: none;
       border-radius: 2px;
       transition: var(--transition);
+      display: inline-block;
     }
 
     .editable-field:focus {
@@ -571,32 +631,84 @@
 <body>
 
   <!-- ==========================================================================
-       TOP CONTROL PANEL (MILESTONE SWITCHER & ACTIONS)
+       TOP CONTROL PANEL (MILESTONE SWITCHER & LIVE EDITING CONTROLS)
        ========================================================================== -->
   <div class="top-toolbar">
+    <!-- Milestone Tabs Row -->
     <div class="toolbar-row">
       <div style="color: #fff; font-size: 0.88rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem;">
         <i class="fa-solid fa-file-invoice-dollar" style="color: #38bdf8;"></i>
         <span>Select Milestone Invoice:</span>
       </div>
 
-      <!-- 3 Specific Milestone Invoices -->
       <div class="selector-tabs-group">
-        <button class="tab-btn active" onclick="switchMilestone(1)">
-          <i class="fa-solid fa-clock"></i> Inv #1: ₹30k (60% Advance)
+        <button class="tab-btn active" id="tabBtn1" onclick="switchMilestone(1)">
+          <i class="fa-solid fa-clock"></i> <span id="tab1Title">Inv #1: ₹30k (Advance)</span>
         </button>
-        <button class="tab-btn" onclick="switchMilestone(2)">
-          <i class="fa-solid fa-circle-half-stroke"></i> Inv #2: ₹10k (Paid ₹30k)
+        <button class="tab-btn" id="tabBtn2" onclick="switchMilestone(2)">
+          <i class="fa-solid fa-circle-half-stroke"></i> <span id="tab2Title">Inv #2: ₹15k (Paid ₹30k)</span>
         </button>
-        <button class="tab-btn" onclick="switchMilestone(3)">
-          <i class="fa-solid fa-circle-check"></i> Inv #3: ₹10k (All Over)
+        <button class="tab-btn" id="tabBtn3" onclick="switchMilestone(3)">
+          <i class="fa-solid fa-circle-check"></i> <span id="tab3Title">Inv #3: ₹15k (Settled)</span>
         </button>
       </div>
     </div>
 
+    <!-- Milestone Price Editor Row -->
+    <div class="editor-section-card">
+      <div class="editor-section-title">
+        <i class="fa-solid fa-money-bill-wave"></i> Edit Milestone Prices & Fee Breakdown (INR)
+      </div>
+      <div class="editor-inputs-grid">
+        <div class="editor-field-group">
+          <label class="editor-label" for="inputM1Price">Milestone 01 Price (Advance)</label>
+          <input type="number" id="inputM1Price" class="editor-input" value="30000" step="500" oninput="handleMilestonePriceChange()">
+        </div>
+
+        <div class="editor-field-group">
+          <label class="editor-label" for="inputM2Price">Milestone 02 Price (Architecture/DB)</label>
+          <input type="number" id="inputM2Price" class="editor-input" value="15000" step="500" oninput="handleMilestonePriceChange()">
+        </div>
+
+        <div class="editor-field-group">
+          <label class="editor-label" for="inputM3Price">Milestone 03 Price (Final Handover)</label>
+          <input type="number" id="inputM3Price" class="editor-input" value="15000" step="500" oninput="handleMilestonePriceChange()">
+        </div>
+
+        <div class="editor-field-group">
+          <label class="editor-label" for="inputTotalAgreedFee">Calculated Total Fee (M1+M2+M3)</label>
+          <input type="number" id="inputTotalAgreedFee" class="editor-input" value="60000" readonly style="background: #0f172a; color: #38bdf8; font-weight: 700; border-color: #38bdf8;">
+        </div>
+      </div>
+    </div>
+
+    <!-- Client & Contact Person Real-Time Editor Section -->
+    <div class="editor-section-card">
+      <div class="editor-section-title">
+        <i class="fa-solid fa-user-pen"></i> Edit Client & Company Details
+      </div>
+      <div class="editor-inputs-grid">
+        <div class="editor-field-group">
+          <label class="editor-label" for="inputCompanyName"><i class="fa-solid fa-building"></i> Client Company Name</label>
+          <input type="text" id="inputCompanyName" class="editor-input" value="FCS Consultancy" oninput="syncClientDetails()">
+        </div>
+
+        <div class="editor-field-group">
+          <label class="editor-label" for="inputClientName"><i class="fa-solid fa-user"></i> Contact Person</label>
+          <input type="text" id="inputClientName" class="editor-input" value="Management & Project Directors" oninput="syncClientDetails()">
+        </div>
+
+        <div class="editor-field-group">
+          <label class="editor-label" for="inputClientPhone"><i class="fa-solid fa-phone"></i> Client Phone Number</label>
+          <input type="text" id="inputClientPhone" class="editor-input" value="+91 98765 43210" oninput="syncClientDetails()">
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions & Signature Bar -->
     <div class="toolbar-row" style="border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 0.65rem;">
       <div style="font-size: 0.78rem; color: #94a3b8;">
-        <i class="fa-solid fa-circle-info" style="color: #38bdf8;"></i> All fields with dotted lines can be edited inline. Signature upload saves locally.
+        <i class="fa-solid fa-circle-info" style="color: #38bdf8;"></i> Updating prices recalculates all balances, milestones, and dynamic UPI QR code.
       </div>
 
       <div style="display: flex; gap: 0.5rem;">
@@ -620,7 +732,7 @@
       <!-- Invoice Header -->
       <header class="inv-header">
         <div>
-          <h1 class="company-title">FCS Consultancy</h1>
+          <h1 class="company-title" id="displayHeaderCompany">FCS Consultancy</h1>
           <div class="company-sub">Management System Project Planning & Guidance</div>
           <div class="company-meta">
             Instructor & Lead Architect: <strong>Praveenkumar </strong><br>
@@ -633,7 +745,7 @@
           <div class="invoice-title-pill" id="invoiceTypePill">INVOICE</div><br>
           <div class="status-badge due" id="invoiceStatusBadge">PAYMENT DUE</div>
           <div class="meta-data-line">Invoice ID: <strong class="editable-field" contenteditable="true" id="invoiceIdField">FCS-INV-001</strong></div>
-          <div class="meta-data-line">Date: <strong class="editable-field" contenteditable="true" id="invoiceDateField">22 Oct 2026</strong></div>
+          <div class="meta-data-line">Date: <strong class="editable-field" contenteditable="true" id="invoiceDateField">23 Oct 2026</strong></div>
           <div class="meta-data-line">Due Date: <strong class="editable-field" contenteditable="true" id="invoiceDueDateField">Immediate</strong></div>
         </div>
       </header>
@@ -642,11 +754,11 @@
       <section class="parties-row">
         <div>
           <div class="party-title">Billed To (Client):</div>
-          <div class="party-name editable-field" contenteditable="true">FCS Consultancy</div>
+          <div class="party-name editable-field" contenteditable="true" id="displayClientCompany" oninput="syncFromInvoice('company')">FCS Consultancy</div>
           <div class="party-text">
-            Attn: Management & Project Stakeholders<br>
-            Scope: Consultancy Business Management System<br>
-            Delivery: Guided AI Implementation
+            Attn: <span class="editable-field" contenteditable="true" id="displayClientContact" oninput="syncFromInvoice('contact')">Management & Project Directors</span><br>
+            Phone: <span class="editable-field" contenteditable="true" id="displayClientPhone" oninput="syncFromInvoice('phone')">+91 98765 43210</span><br>
+            Scope: <span class="editable-field" contenteditable="true">Consultancy Business Management System</span>
           </div>
         </div>
 
@@ -656,7 +768,7 @@
           <div class="party-text">
             Official UPI ID: <strong class="upi-badge-code">8667536739-2@ybl</strong><br>
             Beneficiary: Praveenkumar <br>
-            Account: Resident Individual
+            Account: Resident Individual &bull; INR (₹)
           </div>
         </div>
       </section>
@@ -672,7 +784,7 @@
           </tr>
         </thead>
         <tbody id="lineItemsTableBody">
-          <!-- Injected via JavaScript based on selected milestone -->
+          <!-- Injected via JavaScript based on selected milestone and current amounts -->
         </tbody>
       </table>
 
@@ -687,10 +799,10 @@
             <div style="font-weight: 700; color: var(--primary-navy); margin-bottom: 0.2rem; display: flex; align-items: center; gap: 0.35rem;">
               <i class="fa-solid fa-qrcode" style="color: var(--accent-blue);"></i> Instant UPI Scan & Pay
             </div>
-            <div>Scan with GPay, PhonePe, Paytm or BHIM</div>
+            <div>Scan with GPay, PhonePe, Paytm, or BHIM</div>
             <div>Receiving UPI: <span class="upi-badge-code">8667536739-2@ybl</span></div>
             <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 0.25rem;">
-              Dynamic QR auto-encoded with exact payable: <strong id="qrAmountCaption" style="color: var(--primary-navy);">₹30,000</strong>
+              Dynamic QR auto-encoded with payable: <strong id="qrAmountCaption" style="color: var(--primary-navy);">₹30,000</strong>
             </div>
           </div>
         </div>
@@ -699,7 +811,7 @@
         <div class="calculation-panel">
           <div class="calc-row">
             <span>Agreed Total Advisory Fee:</span>
-            <span class="num-font">₹60,000.00</span>
+            <span class="num-font" id="displayTotalFee">₹50,000.00</span>
           </div>
           <div class="calc-row">
             <span id="prevPaidLabel">Previous Payments Received:</span>
@@ -727,13 +839,13 @@
             <li>Source coding and server execution are the responsibility of the client's developer.</li>
             <li>Disbursement is non-refundable once milestone review is presented and handed over.</li>
             <li>Payment Reference / UTR: <span class="editable-field" contenteditable="true" id="utrField">To be updated upon transfer</span></li>
-             <li>check full project explaination.<a href="https://itspraveendh.github.io/system/">click here</a></li>
+            <li>Full project specification reference: <a href="https://itspraveendh.github.io/system/" target="_blank" style="color: var(--accent-blue); text-decoration: underline;">View Online Roadmap</a></li>
           </ul>
         </div>
 
         <div class="signature-card-box">
           <div class="sign-preview-area" id="signPreviewArea">
-            <span class="sign-fallback-text" id="signFallbackText">Praveenkumar</span>
+            <span class="sign-fallback-text" id="signFallbackText">Praveenkumar </span>
             <img id="signatureImage" src="" alt="Digital Signature" style="display: none;">
           </div>
           <div class="sign-line">Authorized Signatory</div>
@@ -747,7 +859,7 @@
       </section>
 
       <footer class="invoice-footer-bar">
-        <div>FCS Consultancy Management System &bull; Project Planning & Guided Implementation</div>
+        <div><span id="footerCompanyText">FCS Consultancy</span> Management System &bull; Project Planning & Guided Implementation</div>
         <div>Computer Generated Invoice &bull; Beneficiary ID: 8667536739-2@ybl</div>
       </footer>
     </div>
@@ -755,109 +867,41 @@
   </main>
 
   <!-- ==========================================================================
-       JAVASCRIPT: MILESTONE DATA ENGINE, DYNAMIC QR & SIGNATURE UPLOADER
+       JAVASCRIPT: MILESTONE ENGINE, DYNAMIC AMOUNT & CLIENT DETAILS SYNC
        ========================================================================== -->
   <script>
     const UPI_ID = "8667536739-2@ybl";
     const PAYEE_NAME = "Praveenkumar ";
 
-    // 3 Dedicated Milestone Invoice Profiles
-    const milestoneData = {
+    // Master Milestone Price State (Freely Editable)
+    const milestonePrices = {
+      m1: 30000,
+      m2: 15000,
+      m3: 15000
+    };
+
+    // Metadata for the 3 Invoices
+    const invoiceMeta = {
       1: {
         invId: "FCS-INV-001",
-        date: "22 Oct 2026",
+        date: "23 Oct 2026",
         dueDate: "Advance (Immediate)",
         statusText: "PAYMENT DUE (UNPAID)",
-        statusClass: "due",
-        prevPaid: 0,
-        dueAmount: 30000,
-        lineItems: [
-          {
-            title: "Milestone 01: Project Planning & Master Requirements (60% Advance)",
-            desc: "Comprehensive business requirements mapping across all 20 business modules, 7 role-based dashboards, database schemas, and AI master prompts.",
-            alloc: "60%",
-            amount: 30000
-          },
-          {
-            title: "Milestone 02: Architecture & Database Design Approval",
-            desc: "Scheduled upon presentation of relational MySQL schemas and PHP directory layout.",
-            alloc: "20%",
-            amount: 15000,
-            isFuture: true
-          },
-          {
-            title: "Milestone 03: Final Guided Implementation & Handover",
-            desc: "Scheduled upon completion of integration testing and final code review walkthrough.",
-            alloc: "20%",
-            amount: 15000,
-            isFuture: true
-          }
-        ],
-        notes: "Milestone 01 advance payment required before technical requirement analysis begins."
+        statusClass: "due"
       },
       2: {
         invId: "FCS-INV-002",
-        date: "29 Oct 2026",
+        date: "30 Oct 2026",
         dueDate: "Upon Architecture Approval",
         statusText: "CURRENT BALANCE DUE",
-        statusClass: "due",
-        prevPaid: 30000,
-        dueAmount: 15000,
-        lineItems: [
-          {
-            title: "Milestone 01: Project Planning & Requirements",
-            desc: "60% Advance Payment received and credited towards technical architecture initialization.",
-            alloc: "60%",
-            amount: 30000,
-            isPaid: true
-          },
-          {
-            title: "Milestone 02: System Architecture & MySQL Database Schema (20%)",
-            desc: "Completed modular folder structures, MySQL tables, foreign keys, and AI-assisted code generation prompts.",
-            alloc: "20%",
-            amount: 15000
-          },
-          {
-            title: "Milestone 03: Final Implementation Guidance & Handover",
-            desc: "Scheduled following developer integration support, manual QA checklists, and handover.",
-            alloc: "20%",
-            amount: 15000,
-            isFuture: true
-          }
-        ],
-        notes: "Reflects ₹30,000 received for Milestone 01. ₹15,000 due for Milestone 02 deliverables."
+        statusClass: "due"
       },
       3: {
         invId: "FCS-INV-003",
-        date: "05 Nov 2026",
+        date: "06 Nov 2026",
         dueDate: "Final Settlement",
         statusText: "SETTLED / COMPLETED",
-        statusClass: "settled",
-        prevPaid: 45000,
-        dueAmount: 15000,
-        lineItems: [
-          {
-            title: "Milestone 01: Requirement Analysis & Master Prompts",
-            desc: "Full requirement analysis and master development roadmap approved.",
-            alloc: "60%",
-            amount: 30000,
-            isPaid: true
-          },
-          {
-            title: "Milestone 02: System Architecture & Database Design",
-            desc: "Database schemas, ER diagrams, and modular controller design verified.",
-            alloc: "20%",
-            amount: 15000,
-            isPaid: true
-          },
-          {
-            title: "Milestone 03: Final Implementation Guidance & QA Review (20%)",
-            desc: "Completed integration walkthrough, testing checklist review, and project documentation handover.",
-            alloc: "20%",
-            amount: 15000
-          }
-        ],
-        notes: "All ₹60,000 professional fees fully accounted for. Total project scope delivered."
+        statusClass: "settled"
       }
     };
 
@@ -871,7 +915,7 @@
       }
 
       // Initialize Milestone 1
-      renderInvoice(1);
+      refreshInvoiceDisplay();
 
       // Signature file upload listener
       document.getElementById("signFileInput").addEventListener("change", handleSignatureUpload);
@@ -883,26 +927,104 @@
       document.querySelectorAll(".tab-btn").forEach((btn, idx) => {
         btn.classList.toggle("active", idx + 1 === index);
       });
-      renderInvoice(index);
+      refreshInvoiceDisplay();
     }
 
-    // Render Full Invoice Based on Selected Milestone
-    function renderInvoice(index) {
-      const data = milestoneData[index];
+    // Handles live adjustments from the 3 Milestone price input fields
+    function handleMilestonePriceChange() {
+      const p1 = Math.max(0, parseFloat(document.getElementById("inputM1Price").value) || 0);
+      const p2 = Math.max(0, parseFloat(document.getElementById("inputM2Price").value) || 0);
+      const p3 = Math.max(0, parseFloat(document.getElementById("inputM3Price").value) || 0);
 
-      // Update Meta Fields
-      document.getElementById("invoiceIdField").textContent = data.invId;
-      document.getElementById("invoiceDateField").textContent = data.date;
-      document.getElementById("invoiceDueDateField").textContent = data.dueDate;
+      milestonePrices.m1 = p1;
+      milestonePrices.m2 = p2;
+      milestonePrices.m3 = p3;
 
-      // Status Badge
+      const total = p1 + p2 + p3;
+      document.getElementById("inputTotalAgreedFee").value = total;
+
+      // Update button tab titles to reflect new amounts
+      document.getElementById("tab1Title").textContent = `Inv #1: ₹${formatCompact(p1)} (Advance)`;
+      document.getElementById("tab2Title").textContent = `Inv #2: ₹${formatCompact(p2)} (Paid ₹${formatCompact(p1)})`;
+      document.getElementById("tab3Title").textContent = `Inv #3: ₹${formatCompact(p3)} (Settled)`;
+
+      refreshInvoiceDisplay();
+    }
+
+    // Calculate and refresh invoice sheet content based on current prices and active tab
+    function refreshInvoiceDisplay() {
+      const meta = invoiceMeta[currentMilestone];
+      const m1 = milestonePrices.m1;
+      const m2 = milestonePrices.m2;
+      const m3 = milestonePrices.m3;
+      const totalFee = m1 + m2 + m3;
+
+      let prevPaid = 0;
+      let currentDue = 0;
+
+      if (currentMilestone === 1) {
+        prevPaid = 0;
+        currentDue = m1;
+      } else if (currentMilestone === 2) {
+        prevPaid = m1;
+        currentDue = m2;
+      } else if (currentMilestone === 3) {
+        prevPaid = m1 + m2;
+        currentDue = m3;
+      }
+
+      // Percentages calculated dynamically
+      const pct1 = totalFee > 0 ? Math.round((m1 / totalFee) * 100) : 0;
+      const pct2 = totalFee > 0 ? Math.round((m2 / totalFee) * 100) : 0;
+      const pct3 = totalFee > 0 ? Math.round((m3 / totalFee) * 100) : 0;
+
+      // Update Header Meta
+      document.getElementById("invoiceIdField").textContent = meta.invId;
+      document.getElementById("invoiceDateField").textContent = meta.date;
+      document.getElementById("invoiceDueDateField").textContent = meta.dueDate;
+
+      // Update Status Badge
       const statusBadge = document.getElementById("invoiceStatusBadge");
-      statusBadge.textContent = data.statusText;
-      statusBadge.className = `status-badge ${data.statusClass}`;
+      statusBadge.textContent = meta.statusText;
+      statusBadge.className = `status-badge ${meta.statusClass}`;
 
-      // Table Line Items
+      // Build Table Line Items Dynamically
+      const lineItems = [
+        {
+          num: "01",
+          title: `Milestone 01: Project Planning & Master Requirements (${pct1}% Advance)`,
+          desc: "Comprehensive business requirements mapping across all 20 business modules, 7 role-based dashboards, database schemas, and AI master prompts.",
+          alloc: `${pct1}%`,
+          amount: m1,
+          isPaid: currentMilestone > 1,
+          isCurrent: currentMilestone === 1,
+          stageKey: "m1"
+        },
+        {
+          num: "02",
+          title: `Milestone 02: Architecture & Database Design Approval (${pct2}%)`,
+          desc: "Completed modular folder structures, MySQL tables, foreign keys, and AI-assisted code generation prompts.",
+          alloc: `${pct2}%`,
+          amount: m2,
+          isPaid: currentMilestone > 2,
+          isCurrent: currentMilestone === 2,
+          isFuture: currentMilestone < 2,
+          stageKey: "m2"
+        },
+        {
+          num: "03",
+          title: `Milestone 03: Final Implementation Guidance & QA Review (${pct3}%)`,
+          desc: "Completed integration walkthrough, testing checklist review, and project documentation handover.",
+          alloc: `${pct3}%`,
+          amount: m3,
+          isCurrent: currentMilestone === 3,
+          isFuture: currentMilestone < 3,
+          stageKey: "m3"
+        }
+      ];
+
       const tableBody = document.getElementById("lineItemsTableBody");
-      tableBody.innerHTML = data.lineItems.map((item, i) => {
+      tableBody.innerHTML = lineItems.map((item) => {
         let tag = "";
         let amountStyle = "color: var(--primary-navy);";
 
@@ -912,27 +1034,32 @@
         } else if (item.isFuture) {
           tag = ` <span style="font-size:0.7rem; color:var(--text-muted); background:#f1f5f9; padding:0.1rem 0.35rem; border-radius:3px;">UPCOMING</span>`;
           amountStyle = "color: var(--text-muted);";
+        } else if (item.isCurrent) {
+          tag = ` <span style="font-size:0.7rem; font-weight:700; color:var(--accent-blue); background:#dbeafe; padding:0.1rem 0.35rem; border-radius:3px;">DUE</span>`;
         }
 
         return `
           <tr>
-            <td>0${i + 1}</td>
+            <td>${item.num}</td>
             <td>
               <div class="item-title">${item.title} ${tag}</div>
               <div class="item-desc">${item.desc}</div>
             </td>
             <td>${item.alloc}</td>
-            <td class="text-right num-font" style="${amountStyle}">₹${item.amount.toLocaleString('en-IN')}.00</td>
+            <td class="text-right num-font" style="${amountStyle}">
+              ₹<span class="editable-field" contenteditable="true" onblur="handleInlineTableAmountEdit(this, '${item.stageKey}')">${item.amount.toLocaleString('en-IN')}</span>.00
+            </td>
           </tr>
         `;
       }).join("");
 
-      // Calculations Panel
-      document.getElementById("prevPaidAmountDisplay").textContent = `₹${data.prevPaid.toLocaleString('en-IN')}.00`;
-      document.getElementById("dueAmountDisplay").textContent = `₹${data.dueAmount.toLocaleString('en-IN')}.00`;
-      document.getElementById("qrAmountCaption").textContent = `₹${data.dueAmount.toLocaleString('en-IN')}`;
+      // Update Financial Calculations Panel
+      document.getElementById("displayTotalFee").textContent = `₹${totalFee.toLocaleString('en-IN')}.00`;
+      document.getElementById("prevPaidAmountDisplay").textContent = `₹${prevPaid.toLocaleString('en-IN')}.00`;
+      document.getElementById("dueAmountDisplay").textContent = `₹${currentDue.toLocaleString('en-IN')}.00`;
+      document.getElementById("qrAmountCaption").textContent = `₹${currentDue.toLocaleString('en-IN')}`;
 
-      if (index === 3) {
+      if (currentMilestone === 3) {
         document.getElementById("dueLabelDisplay").textContent = "Final Balance Payable:";
         document.getElementById("prevPaidLabel").textContent = "Previously Settled (M1 + M2):";
       } else {
@@ -941,14 +1068,61 @@
       }
 
       // Update Dynamic UPI QR Code
-      updateDynamicQr(data.dueAmount, data.invId);
+      updateDynamicQr(currentDue, meta.invId);
     }
 
-    // Dynamic QR Generator using Standard UPI Payment Link
+    // Handles direct editing from the table row amounts
+    function handleInlineTableAmountEdit(el, stageKey) {
+      const cleanNum = parseFloat(el.textContent.replace(/[^0-9.]/g, '')) || 0;
+      milestonePrices[stageKey] = cleanNum;
+
+      if (stageKey === 'm1') document.getElementById("inputM1Price").value = cleanNum;
+      if (stageKey === 'm2') document.getElementById("inputM2Price").value = cleanNum;
+      if (stageKey === 'm3') document.getElementById("inputM3Price").value = cleanNum;
+
+      handleMilestonePriceChange();
+    }
+
+    // Dynamic QR Generator using Standard UPI Payment Protocol
     function updateDynamicQr(amount, invoiceRef) {
       const upiUrl = `upi://pay?pa=${UPI_ID}&pn=${encodeURIComponent(PAYEE_NAME)}&am=${amount}&cu=INR&tn=${encodeURIComponent('FCS Invoice ' + invoiceRef)}`;
       const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encodeURIComponent(upiUrl)}`;
       document.getElementById("dynamicQrImg").src = qrApiUrl;
+    }
+
+    // Sync Client Details from Top Panel to Invoice
+    function syncClientDetails() {
+      const companyVal = document.getElementById("inputCompanyName").value.trim() || "FCS Consultancy";
+      const contactVal = document.getElementById("inputClientName").value.trim() || "Management & Project Directors";
+      const phoneVal = document.getElementById("inputClientPhone").value.trim() || "+91 98765 43210";
+
+      document.getElementById("displayHeaderCompany").textContent = companyVal;
+      document.getElementById("displayClientCompany").textContent = companyVal;
+      document.getElementById("displayClientContact").textContent = contactVal;
+      document.getElementById("displayClientPhone").textContent = phoneVal;
+      document.getElementById("footerCompanyText").textContent = companyVal;
+    }
+
+    // Sync Client Details if edited directly on the Invoice Sheet
+    function syncFromInvoice(type) {
+      if (type === 'company') {
+        const val = document.getElementById("displayClientCompany").textContent.trim();
+        document.getElementById("inputCompanyName").value = val;
+        document.getElementById("displayHeaderCompany").textContent = val;
+        document.getElementById("footerCompanyText").textContent = val;
+      } else if (type === 'contact') {
+        document.getElementById("inputClientName").value = document.getElementById("displayClientContact").textContent.trim();
+      } else if (type === 'phone') {
+        document.getElementById("inputClientPhone").value = document.getElementById("displayClientPhone").textContent.trim();
+      }
+    }
+
+    // Helper to format short numbers (e.g., 30000 -> 30k)
+    function formatCompact(num) {
+      if (num >= 1000) {
+        return (num / 1000) + 'k';
+      }
+      return num;
     }
 
     // Signature Upload Handler
